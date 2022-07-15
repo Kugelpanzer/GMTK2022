@@ -1,0 +1,5 @@
+         //   Debug.Log(currentValue.ToString() + "| " + chanceValue.ToString() + "| " + realChance.Take(realChance.Count - 1).Sum(x => x.Value) + "| " + realChance.Sum(x => x.Value) + "| " + entry.Key);
+
+            if (realChance.Take(realChance.Count - 1).Sum(x => x.Value) < currentValue)
+                Debug.Log(currentValue.ToString() + "| " + chanceValue.ToString() + "| " + realChance.Take(realChance.Count - 1).Sum(x => x.Value) + "| " + realChance.Sum(x => x.Value) + "| " + entry.Key);
+            

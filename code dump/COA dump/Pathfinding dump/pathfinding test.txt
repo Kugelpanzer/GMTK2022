@@ -1,0 +1,125 @@
+        //----------------------------------------------------------------------------------------------------------
+        List<Location> locationList = new List<Location>();
+        locationList.Add(Location.GetLocationByName("Morninside"));
+        locationList.Add(Location.GetLocationByName("Dogburn"));
+        locationList.Add(Location.GetLocationByName("Lion's Cross"));
+        locationList.Add(Location.GetLocationByName("Blackacre"));
+        locationList.Add(Location.GetLocationByName("Tradegulf"));
+        locationList.Add(Location.GetLocationByName("Bleakdrift"));
+        locationList.Add(Location.GetLocationByName("Frostcar"));
+        locationList.Add(Location.GetLocationByName("Bleakcall"));
+        locationList.Add(Location.GetLocationByName("Flatborn"));
+        locationList.Add(Location.GetLocationByName("Oakfall"));
+        locationList.Add(Location.GetLocationByName("Wildgulf"));
+        locationList.Add(Location.GetLocationByName("Demonview"));
+        locationList.Add(Location.GetLocationByName("Frostfield"));
+        locationList.Add(Location.GetLocationByName("Falldrift"));
+        locationList.Add(Location.GetLocationByName("Basinrock"));
+        locationList.Add(Location.GetLocationByName("Ironford"));
+        locationList.Add(Location.GetLocationByName("Decafall"));
+        locationList.Add(Location.GetLocationByName("Oldrock"));
+        locationList.Add(Location.GetLocationByName("Basinpond"));
+        locationList.Add(Location.GetLocationByName("Puredale"));
+        locationList.Add(Location.GetLocationByName("Mythwell"));
+        locationList.Add(Location.GetLocationByName("Tall Marina"));
+        locationList.Add(Location.GetLocationByName("Lostmouth"));
+        locationList.Add(Location.GetLocationByName("Glimmerwall"));
+        locationList.Add(Location.GetLocationByName("Sandfell"));
+        locationList.Add(Location.GetLocationByName("Hotstrand"));
+        locationList.Add(Location.GetLocationByName("Dryhand"));
+        locationList.Add(Location.GetLocationByName("Bearside"));
+        locationList.Add(Location.GetLocationByName("Freyhalm"));
+        locationList.Add(Location.GetLocationByName("Summergrove"));
+        locationList.Add(Location.GetLocationByName("Riverdale"));
+        locationList.Add(Location.GetLocationByName("Letoleula"));
+        locationList.Add(Location.GetLocationByName("Emberhollow"));
+        locationList.Add(Location.GetLocationByName("Farwich"));
+        locationList.Add(Location.GetLocationByName("Limeharbor"));
+        locationList.Add(Location.GetLocationByName("Roguebreak"));
+        locationList.Add(Location.GetLocationByName("Goldhaven"));
+        locationList.Add(Location.GetLocationByName("Goldfell"));
+        locationList.Add(Location.GetLocationByName("Deaddenn"));
+        locationList.Add(Location.GetLocationByName("Bluestar"));
+        locationList.Add(Location.GetLocationByName("Smoothspell"));
+        locationList.Add(Location.GetLocationByName("Maplefalls"));
+        locationList.Add(Location.GetLocationByName("Deermore"));
+        locationList.Add(Location.GetLocationByName("Lightstar"));
+        locationList.Add(Location.GetLocationByName("Amberbell"));
+        locationList.Add(Location.GetLocationByName("Dimbay"));
+        locationList.Add(Location.GetLocationByName("Duskmore"));
+        locationList.Add(Location.GetLocationByName("Steelgate"));
+        locationList.Add(Location.GetLocationByName("Flamemond"));
+        locationList.Add(Location.GetLocationByName("Fearfair"));
+        locationList.Add(Location.GetLocationByName("Dragongrave"));
+        locationList.Add(Location.GetLocationByName("Fayhelm"));
+        locationList.Add(Location.GetLocationByName("Wildglen"));
+        locationList.Add(Location.GetLocationByName("Rivervale"));
+        locationList.Add(Location.GetLocationByName("Shadereach"));
+        locationList.Add(Location.GetLocationByName("Cliffgulch"));
+        locationList.Add(Location.GetLocationByName("Deadrock"));
+        locationList.Add(Location.GetLocationByName("Beachwind"));
+        locationList.Add(Location.GetLocationByName("Zatera"));
+        locationList.Add(Location.GetLocationByName("Lost Island"));
+        locationList.Add(Location.GetLocationByName("Uquasuf"));
+        locationList.Add(Location.GetLocationByName("Graymire"));
+        locationList.Add(Location.GetLocationByName("Southglen"));
+        locationList.Add(Location.GetLocationByName("Sioura"));
+        locationList.Add(Location.GetLocationByName("Wintermount"));
+        locationList.Add(Location.GetLocationByName("Craggulf"));
+        locationList.Add(Location.GetLocationByName("Ofen Anore"));
+        locationList.Add(Location.GetLocationByName("Everburn"));
+        locationList.Add(Location.GetLocationByName("Ao Lenora"));
+        locationList.Add(Location.GetLocationByName("Westbarrow"));
+        locationList.Add(Location.GetLocationByName("Quickpeak"));
+        locationList.Add(Location.GetLocationByName("Demonscar"));
+        locationList.Add(Location.GetLocationByName("Oceanvault"));
+        float sum = 0;
+        float avgRoads = 0;
+        float avgRoadSize = 0;
+        int moreThenTen = 0;
+        int cases = 100000;
+        Stopwatch s = new Stopwatch();
+        for (int i = 0; i < cases; i++)
+        {
+            if (i % 1000 == 0)
+            {
+               UnityEngine.Debug.Log(i);
+            }
+
+            System.Random random = new System.Random();
+            int randomNumber = random.Next(0, locationList.Count);
+            int randomNumber2 = random.Next(0, locationList.Count);
+
+            while (randomNumber == randomNumber2)
+            {
+                randomNumber2 = random.Next(0, locationList.Count);
+            }
+            Pathfinding.Instance.stepDispersion = 1f;
+            s.Start();
+            List<Road> roads = Pathfinding.CalcShortestRoadBetweenLocations(locationList[randomNumber], locationList[randomNumber2]);
+            s.Stop();
+            sum += s.ElapsedMilliseconds;
+            if (s.ElapsedMilliseconds > 10)
+            {
+                moreThenTen++;
+            }
+            s.Reset();
+
+            foreach (Road r in roads)
+            {
+                avgRoadSize += r.length;
+                avgRoads++;
+            }
+        }
+
+
+        UnityEngine.Debug.Log("CASES TESTED: " + cases);
+        UnityEngine.Debug.Log("AVERAGE TIME OF EXECUTION: " + sum / cases);
+        UnityEngine.Debug.Log("AVERAGE Roads: " + avgRoads / cases);
+        UnityEngine.Debug.Log("AVERAGE Road size: " + avgRoadSize / cases);
+        UnityEngine.Debug.Log("MORE THEN 10 MILISECONDS: " + moreThenTen);
+
+
+
+        //----------------------------------------------------------------------------------------------------------
+    

@@ -1,0 +1,57 @@
+
+Windows IP Configuration
+
+
+Ethernet adapter Local Area Connection:
+
+   Connection-specific DNS Suffix  . : 
+   Link-local IPv6 Address . . . . . : fe80::c19d:18d4:9853:45b6%11
+   IPv4 Address. . . . . . . . . . . : 192.168.1.103
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.1.1
+
+Ethernet adapter Hamachi:
+
+   Connection-specific DNS Suffix  . : 
+   IPv6 Address. . . . . . . . . . . : 2620:9b::1944:4464
+   Link-local IPv6 Address . . . . . : fe80::590e:8dd8:5f8f:dd48%18
+   IPv4 Address. . . . . . . . . . . : 25.68.68.100
+   Subnet Mask . . . . . . . . . . . : 255.0.0.0
+   Default Gateway . . . . . . . . . : 2620:9b::1900:1
+                                       25.0.0.1
+
+Ethernet adapter VMware Network Adapter VMnet1:
+
+   Connection-specific DNS Suffix  . : 
+   Link-local IPv6 Address . . . . . : fe80::74ba:a993:5897:a90f%19
+   IPv4 Address. . . . . . . . . . . : 192.168.110.1
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 
+
+Ethernet adapter VMware Network Adapter VMnet8:
+
+   Connection-specific DNS Suffix  . : 
+   Link-local IPv6 Address . . . . . : fe80::e825:ee3d:c273:6fbb%20
+   IPv4 Address. . . . . . . . . . . : 192.168.237.1
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 
+
+Tunnel adapter isatap.{713EF301-27A9-4398-B295-3AB44C059D0E}:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+
+Tunnel adapter isatap.{500F01DE-0294-4AE8-AC91-BC6333E3059F}:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+
+Tunnel adapter isatap.{83B73CBE-5270-4639-B2BE-EFCD6AAD3256}:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+
+Tunnel adapter isatap.{03C07731-DBEB-498D-A554-17755628BB50}:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 

@@ -1,0 +1,325 @@
+using Assets.Scripts.UnityDB;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+public class Guild
+{
+
+    public Dictionary<ItemRarity, int> itemsSellOdds = new Dictionary<ItemRarity, int>()
+    {
+        { ItemRarity.Common, 60 },
+        { ItemRarity.Uncommon, 33 },
+        { ItemRarity.Rare, 5 },
+        { ItemRarity.Epic, 2 },
+    };
+//-------------------------------------------------------------------------------------------------------
+    public Dictionary<int, int> expPerLevel = new Dictionary<int, int>() {
+        { 1, 1000 },
+        { 2, 2000 },
+        { 3, 4000 },
+        { 4, 8000 },
+        { 5, 15000 },
+        };
+
+    public Watchable<int> expForLevel;
+//-------------------------------------------------------------------------------------------------------
+    /// <summary>
+    /// Guild gold amount
+    /// </summary>
+    public Watchable<int> gold;
+
+    /// <summary>
+    /// Current guild level
+    /// </summary>
+    public Watchable<int> guildLevel;
+
+    /// <summary>
+    /// Current guild experience
+    /// </summary>
+    public Watchable<int> guildExperiance;
+
+    /// <summary>
+    /// Heroes in the guild
+    /// </summary>
+    public Watchable<List<Hero>> guildHeroes;
+
+    public Watchable<int> maxHeroesPerTeam;
+
+    /// <summary>
+    /// Items in the guild inventory
+    /// </summary>
+    public Watchable<List<Item>> guildItems;
+
+    /// <summary>
+    /// Items in the guild shop
+    /// </summary>
+    public Watchable<List<Item>> guildShop;
+
+    public Watchable<List<Recipe>> unlockedRecipes;
+
+    public Watchable<List<ScheduledCrafting>> scheduledCraftings;
+    public Watchable<List<ScheduledEnchanting>> scheduledEnchantings;
+
+    public Watchable<List<HeroTeam>> guildTeams;
+
+    public Town guildTown;
+
+    public Watchable<List<GuildUpgrade>> guildUpgrades;
+
+    public List<Town> townsWithQuests;
+
+    public Guild(GuildSaveData guildSaveData)
+    {
+        gold = new Watchable<int>(guildSaveData.gold);
+        guildLevel = new Watchable<int>(guildSaveData.guildLevel);
+        guildExperiance = new Watchable<int>(guildSaveData.guildExperiance);
+        guildHeroes = new Watchable<List<Hero>>(guildSaveData.guildHeroes?.Select(r => new Hero(r)).ToList() ?? new List<Hero>());
+        guildItems = new Watchable<List<Item>>(guildSaveData.guildItems.Select(i => Item.GetItemFromItemSaveData(i)).ToList());
+        unlockedRecipes = new Watchable<List<Recipe>>(new List<Recipe>());
+        scheduledCraftings = new Watchable<List<ScheduledCrafting>>(new List<ScheduledCrafting>());
+        scheduledEnchantings = new Watchable<List<ScheduledEnchanting>>(new List<ScheduledEnchanting>());
+        guildTeams = new Watchable<List<HeroTeam>>(guildSaveData.heroTeamSaveDatas?.Select(t => new HeroTeam(t)).ToList() ?? new List<HeroTeam>());
+        guildTown = (Town)Location.GetLocationByGuid(guildSaveData.townGuid) ?? (Town)Location.allLocations.FirstOrDefault(l => l.name == "Morninside");
+        guildShop = new Watchable<List<Item>>(guildSaveData.guildShop.Select(i => Item.GetItemFromItemSaveData(i)).ToList());
+        guildUpgrades = new Watchable<List<GuildUpgrade>>(guildSaveData.guildUpgrades ?? new List<GuildUpgrade>());
+        maxHeroesPerTeam = new Watchable<int>(guildSaveData.maxHeroesPerTeam != 0 ? guildSaveData.maxHeroesPerTeam : 4); 
+        townsWithQuests = guildTown.GetTownsWithinXRoadsAway(2);
+		//--------------------------------------------------------------------------------------------------------------
+        expForLevel = new Watchable<int>(expPerLevel[guildLevel.GetValue()]);
+    }
+
+    /// <summary>
+    /// Adds item to the guild inventory. This will not remove it from where it was before.
+    /// </summary>
+    /// <param name="item"></param>
+    public void AddItem(Item item)
+    {
+        if (item == null)
+        {
+            return;
+        }
+
+        guildItems.GetValue().Add(item);
+        guildItems.SetValue(guildItems.Value.OrderBy(r => r.name.Value).ToList());
+        guildItems.Notify();
+    }
+
+    /// <summary>
+    /// Removes item from the guild inventory. This will not place it anywere after being removed.
+    /// </summary>
+    /// <param name="currentlyDraggedItem"></param>
+    public void RemoveItem(Item currentlyDraggedItem)
+    {
+        guildItems.GetValue().Remove(currentlyDraggedItem);
+        guildItems.Notify();
+    }
+//--------------------------------------------------------------------------------------------------------
+    /// <summary>
+    /// Adds experience to the guild and levels it
+    /// </summary>
+    /// <param name="amount"></param>
+    public void AddExperience(int amount)
+    {
+        if (amount < 1)
+        {
+            return;
+        }
+
+        guildExperiance.SetValue(guildExperiance.GetValue() + amount);
+
+        if (guildExperiance.GetValue() >= expForLevel.GetValue())
+        {
+            if (guildLevel.GetValue() == 5)
+            {
+                return;
+            }
+            else
+            {
+                LevelUp();
+            }
+        }
+    }
+
+    public void LevelUp()
+    {
+
+        guildExperiance.SetValue(Math.Max(guildExperiance.GetValue() - expForLevel.GetValue(), 0));
+
+        guildLevel.SetValue(guildLevel.GetValue() + 1);
+
+        expForLevel.SetValue(expPerLevel[guildLevel.GetValue()]);
+
+    }
+//-------------------------------------------------------------------------------------------------------------------
+    public Town GetBestTownFromKingdom(Kingdom kingdom)
+    {
+        return (Town)Town.allLocations.FindAll(t =>t is Town && t.GetKindgom() == kingdom).MaxBy(t => t.GetTown().townOrganization.GetRelationship().relationValue.GetValue());
+    }
+
+    public Town GetBestTownFromRegion(Region region)
+    {
+        return (Town)Town.allLocations.FindAll(t => t is Town && t.GetRegion() == region).MaxBy(t => t.GetTown().townOrganization.GetRelationship().relationValue.GetValue());
+    }
+
+    /// <summary>
+    /// Adds the hero to the guild roster and removes money the hero costs
+    /// </summary>
+    /// <param name="myHero"></param>
+    /// <returns></returns>
+    public bool RecriutHero(Hero myHero)
+    {
+        if (TakeGold(myHero.GetPrice()))
+        {
+            AddHero(myHero);
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Removes gold from guild if there is enough money
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool TakeGold(int amount)
+    {
+        if (HasEnoughGold(amount))
+        {
+            gold.SetValue(gold.GetValue() - amount);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public List<Location> GetKnownLocationsWithInfoOn(List<CharacterSkill> locatableVia)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Checks if the guild has the amount of gold
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool HasEnoughGold(int amount)
+    {
+        return gold.GetValue() >= amount;
+    }
+
+    /// <summary>
+    /// Adds a non negative amount of money to the guild
+    /// </summary>
+    /// <param name="amount"></param>
+    public void AddGold(int amount)
+    {
+        if (amount < 1)
+        {
+            return;
+        }
+
+        gold.SetValue(gold.GetValue() + amount);
+    }
+
+    public GuildSaveData Save()
+    {
+        GuildSaveData result = new GuildSaveData
+        {
+            gold = gold.GetValue(),
+            guildLevel = guildLevel.GetValue(),
+            guildExperiance = guildExperiance.GetValue(),
+            guildHeroes = guildHeroes.GetValue().Select(r => r.SaveAsHero()).ToList(),
+            guildItems = guildItems.GetValue().Select(i => i.Save()).ToList(),
+            heroTeamSaveDatas = guildTeams.GetValue().Select(gt => gt.Save()).ToList(),
+            townGuid = guildTown.locationGuid.ToString(),
+            guildShop = guildShop.GetValue().Select(i => i.Save()).ToList(),
+            guildUpgrades = guildUpgrades.Value,
+            maxHeroesPerTeam = maxHeroesPerTeam.Value,
+        };
+
+        return result;
+    }
+
+    public NotablePerson GetBestPlanePersonFor(List<CharacterSkill> locationTags)
+    {
+        return NotablePerson.allNotablePeople.MaxBy(n => n.GetBestSkillOf(locationTags)?.GetPointsInvested() ?? 1 * n.GetRelationship().relationValue.GetValue());
+    }
+
+    public NotablePerson GetBestKingdomPersonFor(List<CharacterSkill> locationTags, Kingdom kingdom)
+    {
+        return NotablePerson.allNotablePeople.Where(n => n.characterLocation.GetKindgom() == kingdom).MaxBy(n => n.GetBestSkillOf(locationTags)?.GetPointsInvested() ?? 1 * n.GetRelationship().relationValue.GetValue());
+    }
+
+    public NotablePerson GetBestRegionPersonFor(List<CharacterSkill> locationTags, Region region)
+    {
+        return NotablePerson.allNotablePeople.Where(n => n.characterLocation.GetRegion() == region).MaxBy(n => n.GetBestSkillOf(locationTags)?.GetPointsInvested() ?? 1 * n.GetRelationship().relationValue.GetValue());
+    }
+
+    public NotablePerson GetBestTownPersonFor(List<CharacterSkill> locationTags, Town town)
+    {
+        return NotablePerson.allNotablePeople.Where(n => n.characterLocation.GetTown() == town).MaxBy(n => n.GetBestSkillOf(locationTags)?.GetPointsInvested() ?? 1 * n.GetRelationship().relationValue.GetValue());
+    }
+
+    public NotablePerson GetBestExactPlacePersonFor(List<CharacterSkill> locationTags, Location location)
+    {
+        return NotablePerson.allNotablePeople.Where(n => n.characterLocation == location).MaxBy(n => n.GetBestSkillOf(locationTags)?.GetPointsInvested() ?? 1 * n.GetRelationship().relationValue.GetValue());
+    }
+
+    /// <summary>
+    /// Adds a hero to the guild roster
+    /// </summary>
+    /// <param name="hero"></param>
+    public void AddHero(Hero hero)
+    {
+        if (!guildHeroes.GetValue().Contains(hero))
+        {
+            guildHeroes.GetValue().Add(hero);
+            guildHeroes.Notify();
+        }
+    }
+
+    public void RemoveTeam(HeroTeam heroTeam)
+    {
+        if (!Quest.allQuests.GetValue().Any(q => q.heroTeam == heroTeam && q.questStatus.Value == QuestStatus.Ongoing))
+        {
+            guildTeams.RemoveElement(heroTeam);
+        }
+    }
+
+
+
+    public void NextTurn()
+    {
+        var allMarketItems = guildShop.Value.ToList();
+        foreach (var item in allMarketItems)
+        {
+            if (Random.ChanceRoll(itemsSellOdds[item.itemRarity.Value], 100 - itemsSellOdds[item.itemRarity.Value]))
+            {
+                AddGold(item.GetSellPrice());
+                guildShop.Value.Remove(item);
+            }
+        }
+        guildShop.Notify();
+
+    }
+
+}
+
+[Serializable]
+public class GuildSaveData
+{
+    public int gold;
+    public int guildLevel;
+    public int guildExperiance;
+    public List<HeroSaveData> guildHeroes;
+    public List<ItemSaveData> guildItems;
+    public List<ItemSaveData> guildShop;
+    public int maxHeroesPerTeam;
+    public List<HeroTeamSaveData> heroTeamSaveDatas;
+    public string townGuid;
+    public List<GuildUpgrade> guildUpgrades;
+}

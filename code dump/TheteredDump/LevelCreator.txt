@@ -1,0 +1,129 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+public class LevelCreator : MonoBehaviour
+{
+
+    /*This script will generate level 
+     *all prefabs on the level
+     */
+    public GameObject mapLayout;
+
+    [Tooltip("Tilemap object which will be used to generate prefabs")]
+    public Tilemap levelLayout;
+
+    List<TileInfo> ti = new List<TileInfo>();
+    public int boardLayers = 2;
+
+    MapController board;
+
+    [System.Serializable]
+    public struct SprToGameObject
+    {
+        public TileBase tileBase;
+        public GameObject type;
+    }
+    public SprToGameObject[] sprToType;
+    private Dictionary<string, GameObject> strType = new Dictionary<string, GameObject>();
+
+    public class TileInfo
+    {
+        public TileInfo(int x, int y,int z, GameObject gameObject)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.gameObject = gameObject;
+            
+        }
+        public int x, y,z;
+        public GameObject gameObject;
+    }
+
+    private void GetAllTiles()
+    {
+        BoundsInt bound = levelLayout.cellBounds;
+        int xMin= bound.xMax;
+        int yMin= bound.yMax;
+        int xMax= bound.xMin;
+        int yMax= bound.yMin;
+        for (int i = bound.yMin; i < bound.yMax; i++)
+            for (int j = bound.xMin; j < bound.xMax; j++)
+            {
+                for (int k = 0; k < boardLayers; k++)
+                {
+                    if (levelLayout.HasTile(new Vector3Int(j , i , k)))
+                    {
+                        if (xMin > j) xMin = j;
+                        if (yMin > i) yMin = i;
+                        if (xMax < j) xMax = j;
+                        if (yMax < i) yMax = i;
+                    }
+                }
+            }
+
+        // init board
+        //Debug.Log(bound.xMin);
+
+
+
+        //for (int i = bound.yMin; i < bound.yMax + 1; i++)
+        //for (int j = bound.xMin; j < bound.xMax; j++)
+        int yBound = yMax - yMin+1;
+        int xBound = xMax - xMin+1;
+        board.CreateBoard(xBound, yBound);
+        for (int i = 0; i < yBound; i++)
+            for(int j=0; j<xBound; j++)
+            {
+                for (int k = 0; k < boardLayers; k++)
+                {
+                    if (levelLayout.HasTile(new Vector3Int(j+xMin, i+ yMin, k)))
+                    {
+                       // Debug.Log(levelLayout.GetSprite(new Vector3Int(j, i, k)).name);
+                        GameObject t = strType[levelLayout.GetTile(new Vector3Int(j + xMin, i + yMin, k)).name];
+
+                        ti.Add(new TileInfo(j, i , k, t));
+                    }
+                }
+            }
+    }
+
+    private void GenerateMap()
+    {
+        for (int i = 0; i < ti.Count; i++)
+        {
+            GameObject gj = Instantiate(ti[i].gameObject);
+            BaseObject b = gj.GetComponent<BaseObject>();
+            b.x = ti[i].x;
+            b.y = ti[i].y;
+            b.layer = ti[i].z;
+            board.AddToMap(b);
+        }
+    }
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        board = GetComponent<MapController>();
+       // levelLayout = mapLayout.GetComponentInChildren<Tilemap>();
+        for (int i = 0; i < sprToType.Length; i++)
+        {
+            strType.Add(sprToType[i].tileBase.name, sprToType[i].type);
+        }
+        GetAllTiles();
+        GenerateMap();
+    }
+    private void Start()
+    {
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}

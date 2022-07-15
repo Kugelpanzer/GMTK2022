@@ -1,0 +1,33 @@
+       '''if gate_type == Constants.AllGates.ADDER:
+                    curr_gate = AdderGate(current_machine[0],*tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.AND:
+                    curr_gate = AndGate(current_machine[0])
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.CHANCE:
+                    curr_gate = ChanceGate(current_machine[0], *tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.CONDITION:
+                    curr_gate = ConditionGate(current_machine[0], *tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.EQUAL:
+                    curr_gate = EqualGate(current_machine[0], *tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.FILTER:
+                    curr_gate = FilterGate(current_machine[0], *tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.GENERATOR:
+                    curr_gate = GeneratorGate(current_machine[0], *tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.GREATER:
+                    curr_gate = GreaterGate(current_machine[0], *tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.INPUT:
+                    curr_gate = InputGate(current_machine[0], *tuple(map(to_int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)
+                elif gate_type == Constants.AllGates.LESSER:
+                    curr_gate = LesserGate(current_machine[0], *tuple(map(int, gate_arguments)))
+                    gate_name_dict[gate_name] = (curr_gate, out_gate)'''
+
+
+

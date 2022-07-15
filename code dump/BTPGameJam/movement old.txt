@@ -1,0 +1,98 @@
+
+public class PlayerMovement : MonoBehaviour
+{
+    public static PlayerMovement playerMovement;
+
+    public float moveSpeed = 1;
+
+    [Tooltip("Dash reload in frames")]
+    public int dashReload = 60;
+    public int dashPower = 10;
+
+
+    public int dashDuration = 20;
+
+    #region private properties
+    private int currDashTime, currDash, currDashReload;
+
+
+    private Vector2 vLeft, vRight, vUp, vDown;
+    private Vector3 moveVector;
+
+    private Rigidbody2D rb;
+    #endregion
+    private void Dashing()
+    {
+        if (currDashTime > 0)
+        {
+            currDash = dashPower;
+            currDashTime--;
+        }
+        else
+        {
+            currDash = 0;
+        }
+        if (currDashReload > 0)
+        {
+            currDashReload--;
+        }
+
+    }
+
+
+    private void MoveScript()
+    {
+        vLeft = Vector2.zero;
+        vRight = Vector2.zero;
+        vUp = Vector2.zero;
+        vDown = Vector2.zero;
+
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            vRight = -Vector2.right;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            vUp = Vector2.up;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            vLeft = Vector2.right;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            vUp = -Vector2.up;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (currDashReload <= 0)
+            {
+                currDashTime = dashDuration;
+                currDashReload = dashReload;
+            }
+        }
+        moveVector = (vLeft + vRight + vUp + vDown).normalized * (moveSpeed + currDash) /* * Time.deltaTime*/;
+        //transform.Translate(moveVector*Time.deltaTime);
+        rb.MovePosition(transform.position + moveVector);
+    }
+
+    private void Awake()
+    {
+        if (playerMovement == null)
+        {
+            playerMovement = this; 
+        }
+        rb = GetComponent<Rigidbody2D>();
+    }
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        MoveScript();
+    }
+}

@@ -1,0 +1,20 @@
+input list size
+output list size
+Block-> max synapse, con number , forget : list of allowed blockes
+start of neur list [
+	input/output list, index io list , value:list of connections(const/nonconst {block,neur}...), ...
+	.
+	.
+	.
+	]
+next Block ->....
+
+========================================================================================================================
+example:
+	50
+        30
+        5,3,T:10,2,1,4,3
+        [
+            i,5,a:(c,i,5,a:{4,2},{5,5},{10,5}),(n:{2,1},{2,5},{50,5})
+            i,5,a:(c:{4,2},{5,5},{10,5}),(n:{2,1},{2,5},{50,5})
+        ]

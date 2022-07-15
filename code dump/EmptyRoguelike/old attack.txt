@@ -1,0 +1,96 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerAttack : MonoBehaviour
+{
+    public GameObject attackObject;
+    public int playerDamage=3;
+    public float reloadHit = 0.3f;
+    public float currReloadHit;
+    public AttackCollider col;
+
+
+    public float rotationSpeed = 100;
+
+    //-------------------------------------------------------------------------------------------------
+    public SpriteRenderer attackPlaceHolder; //will be removed later for real attack animation
+    public float attackAnimDuration = 0.1f;
+    private float currAttackAnimDuration = 0;
+    private bool attackAnimActive = false;
+
+    public void AttackPlaceholderAnimation()
+    {
+        if (!attackAnimActive)
+        {
+            attackPlaceHolder.color = new Color(1,0,0,0.4f);
+            attackAnimActive = true;
+            Debug.Log("attack");
+            currAttackAnimDuration = attackAnimDuration;
+
+        }
+    }
+    //------------------------------------------------------------------------------------------------
+
+    private void Start()
+    {
+        //---------------------------------------------------------------------------------------------
+        attackPlaceHolder.color = Color.clear;
+
+
+        //--------------------------------------------------------------------------------------------
+
+        currReloadHit = reloadHit;
+        col = attackObject.GetComponent<AttackCollider>();
+
+    }
+public void Rotate(Vector2 targetPos)
+    {
+        Vector2 vectorToTarget = targetPos - (Vector2)attackObject.transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        attackObject.transform.rotation = Quaternion.Slerp(attackObject.transform.rotation, q, Time.deltaTime * rotationSpeed);
+    }
+
+    //        Rotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)); //Rotate to mouse
+
+    private void FixedUpdate()
+    {
+
+        if (ControllerScript.gameState == GameState.moving)
+        {
+
+            //-------------------------------------------------------------------------------------------------------
+
+            if (attackAnimActive && currAttackAnimDuration > 0)
+            {
+                currAttackAnimDuration -= Time.fixedDeltaTime;
+
+            }
+            if (currAttackAnimDuration <= 0)
+            {
+                attackPlaceHolder.color = Color.clear;
+                attackAnimActive = false;
+            }
+            //--------------------------------------------------------------------------------------------------------
+
+            Rotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)); //Rotate to mouse
+            if (Input.GetMouseButtonDown(0) &&currReloadHit<=0)
+            {
+                AttackPlaceholderAnimation();
+                currReloadHit = reloadHit;
+                foreach(BaseEnemy b in col.colliders)
+                {
+                    b.TakeDamage(playerDamage);
+                }
+            }
+            if (currReloadHit > 0)
+            {
+                currReloadHit -= Time.fixedDeltaTime;
+            }
+        }
+    }
+
+
+
+}

@@ -1,0 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Assets.Scripts.UnityDB
+{
+    public class SingleGameObjectBinding : Binding
+    {
+        public GameObject prefab;
+
+        Binding[] bindingPool;
+
+        public void Awake()
+        {
+            myActionDelegate = new ActionDelegate(UpdateBinding);
+            mySetTargetActionDelegate = new ActionDelegate(SetTarget);
+
+            if (target != null)
+            {
+                SetTarget(target);
+            }
+        }
+
+        public override void UpdateBinding(object newValue)
+        {
+            if (newValue != null)
+            {
+                if (bindingPool == null)
+                {
+                    bindingPool= Instantiate(prefab, gameObject.transform).GetComponentsInChildren<Binding>();
+                }
+               /* foreach (Transform child in gameObject.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }*/
+
+                if (prefab != null)
+                {
+                       // var bindings = Instantiate(prefab, gameObject.transform).GetComponentsInChildren<Binding>();
+
+                        foreach (Binding binding in bindingPool)
+                        {
+                            if (binding.overridable)
+                            {
+                                binding.SetTarget(newValue, null);
+                            }
+                        }
+                }
+            }
+            else
+            {
+                foreach (Transform child in gameObject.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+        }
+    }
+}

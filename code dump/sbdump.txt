@@ -1,0 +1,6 @@
+    string str="a,b,c, d,em,aa";
+    std::vector<std::string> tr=str_split(str,",");
+    //tr=;
+    for(int i=0;i<tr.size();i++){
+        cout<<tr[i]<<"\n";
+    }

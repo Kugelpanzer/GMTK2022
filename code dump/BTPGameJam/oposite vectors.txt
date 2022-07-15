@@ -1,0 +1,2 @@
+        Debug.DrawLine(test.transform.position, transform.position, Color.white);
+        Debug.DrawLine(test.transform.position,   2* test.transform.position- transform.position, Color.white);

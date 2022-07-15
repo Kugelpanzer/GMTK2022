@@ -1,0 +1,385 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class RoomGenerator : MonoBehaviour
+{
+
+
+    public int roomSize;
+    public int roomNumber;
+    public int levelSize = 0;
+
+    public GameObject hWall, vWall,hDoor,vDoor;
+
+    int[,] levelLayout;
+
+    class Cor
+    {
+        public Cor() { }
+
+        public Cor(int x,int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+        public int x, y;
+    }
+    Cor[] pos = new Cor[4];
+    Cor[] pos2 = new Cor[4];
+    Cor[] pos3 = new Cor[4];
+
+    class Room
+    {
+        public Room(int left, int top ,int  right, int down)
+        {
+            wall[0] = left;
+            wall[1] = top;
+            wall[2] = right;
+            wall[0] = down;
+
+        }
+        public Room(int setDoor)
+        {
+            wall[setDoor] = 2;
+        }
+
+        public Room()   {}
+
+
+        public int[] wall=new int[4];//left -0, top- 1, right -2, down -3 // 0 is open, 1 is wall, 2 is door,3 strict open;
+    }
+
+    Room[,] allRooms/*=new Room[5,5]*/;
+
+    public void LevelMaker()
+    {
+
+        //value of -1 means no room
+        int freeSpace = levelSize * levelSize - roomNumber;
+
+        #region levelLayaut setup
+        for (int i = 0; i < levelSize; i++)
+            for (int j = 0; j < levelSize; j++)
+                levelLayout[i, j] = -1;
+        #endregion
+
+
+
+        int br = 0, curNum = roomNumber;
+        while (curNum > 0)
+        {
+            int xx = Random.Range(0, levelSize), yy = Random.Range(0, levelSize);
+
+            if (levelLayout[yy, xx] == -1)
+            {
+                levelLayout[yy, xx] = br;
+                br++;
+                curNum--;
+            }
+
+
+        }
+
+        //bool rFlag = false;
+        while (freeSpace>0)
+        {
+            int xx = Random.Range(0, levelSize), yy = Random.Range(0, levelSize);
+
+            if (levelLayout[yy,xx]!=-1)
+                if (TakeSpace(xx,yy))
+                {
+                    freeSpace--;
+                   // Debug.Log(freeSpace);
+                }
+
+            /*   bool cFlag=false;
+               for (int i = 0; i < levelSize; i++)
+                   for (int j = 0; j < levelSize; j++)
+                       if (levelLayout[yy, xx] == -1) cFlag = true;
+               if (cFlag == false) rFlag = true;*/
+
+
+
+        }
+
+        RoomSet();
+     /*     string test = "";
+          for (int i = 0; i < levelSize; i++)
+          {
+              test += "\n";
+              for (int j = 0; j < levelSize; j++)
+                  test += levelLayout[i, j];
+          }
+          Debug.Log(test);*/
+    }
+
+    public int Choose(params int[] values)
+    {
+        int i= Random.Range(0, values.Length);
+        return values[i];
+    }
+
+
+    bool TakeSpace(int x,int y)
+    {
+         Cor c = CheckCor(x, y);
+
+        if (levelLayout[y+c.y,x+c.x] == -1)
+        {
+            levelLayout[y + c.y, x + c.x] = levelLayout[y, x];
+            return true;
+        }
+        return false;
+    }
+    Cor CheckCor(int x, int y)
+    {
+        Cor c = new Cor();
+        if ((x > 0) && (x < levelSize - 1) && (y > 0) && (y < levelSize - 1)) c = pos[Random.Range(0, 4)];
+        else if ((x == 0) && (y > 0) && (y < levelSize - 1)) c = pos[Random.Range(1, 4)];
+        else if ((x == levelSize - 1) && (y > 0) && (y < levelSize - 1)) c = pos[Choose(0, 2, 3)];
+        else if ((y == 0) && (x > 0) && (x < levelSize - 1)) c = pos[Choose(0, 1, 3)];
+        else if ((y == levelSize - 1) && (x > 0) && (x < levelSize - 1)) c = pos[Choose(0, 1, 2)];
+        else if ((y == 0) && (x == 0)) c = pos[Choose(1, 3)];
+        else if ((y == 0) && (x < levelSize - 1)) c = pos[Choose(0, 3)];
+        else if ((y == levelSize - 1) && (x == 0)) c = pos[Choose(1, 2)];
+        else if ((y == levelSize - 1) && (x < levelSize - 1)) c = pos[Choose(0, 1)];
+        return c;
+    }
+
+    public void RoomSet()
+    {
+        //left -0, top- 1, right -2, down -3 // 0 is open, 1 is wall 2 is door,3 strict open;
+        #region levelLimit
+        for (int i = 0; i < levelSize; i++)
+        {
+            allRooms[i, 0].wall[0] = 1;
+            allRooms[0, i].wall[1] = 1;
+            allRooms[i, levelSize - 1].wall[2] = 1;
+            allRooms[levelSize - 1, i].wall[3] = 1;
+        }
+        #endregion
+
+        #region level doors
+        int[,] doorCheck = new int[levelSize,levelSize];
+        for (int i = 0; i < levelSize; i++)
+            for (int j = 0; j < levelSize; j++)
+                doorCheck[i, j] = levelLayout[i, j];
+        bool rFlag = false;
+        while (!rFlag)
+        {
+            int xx = Random.Range(0, levelSize), yy = Random.Range(0, levelSize);
+            Cor allowed =CheckCor(xx, yy);
+            for (int i = 0; i < 4; i++)
+                if (allowed.x == pos3[i].x && allowed.y == pos3[i].y) allowed = pos3[i];
+           
+            if (doorCheck[yy, xx]!= doorCheck[yy+allowed.y, xx+allowed.x])
+            {
+                int curR = doorCheck[yy, xx], nextR = doorCheck[yy + allowed.y, xx + allowed.x];
+                int findPos = System.Array.IndexOf(pos3, allowed);
+                
+                int mirrorPos=0;
+                if (findPos == 0 || findPos == 1) mirrorPos = findPos + 2;
+                else if (findPos == 2) mirrorPos = 0;
+                else if (findPos == 3) mirrorPos = 1;
+                allRooms[yy, xx].wall[findPos] = 2;
+                allRooms[yy + allowed.y, xx + allowed.x].wall[mirrorPos] = 3;
+
+
+                if (curR < nextR)
+                {
+                    for (int i = 0; i < levelSize; i++)
+                        for (int j = 0; j < levelSize; j++)
+                           if(doorCheck[i, j]==nextR) doorCheck[i, j] = curR;
+                }
+                else
+                {
+                    for (int i = 0; i < levelSize; i++)
+                        for (int j = 0; j < levelSize; j++)
+                            if (doorCheck[i, j] == curR) doorCheck[i, j] = nextR;
+                }
+            }
+
+            bool cFlag = false;
+            for (int i = 0; i < levelSize; i++)
+                for (int j = 0; j < levelSize; j++)
+                    if (doorCheck[i, j] > 0) cFlag = true;
+            if(!cFlag)   rFlag = true;
+
+
+          /*  string test = "";
+            for (int i = 0; i < levelSize; i++)
+            {
+                test += "\n";
+                for (int j = 0; j < levelSize; j++)
+                    test += doorCheck[i, j];
+            }
+            Debug.Log(test);*/
+
+
+        }
+        #endregion
+
+        #region level walls
+        for (int i = 0; i < levelSize; i++)
+            for (int j = 0; j < levelSize; j++)
+                for (int k = 0; k < 4; k++)
+                {
+                    if((i + pos2[k].y>=0)&&(i + pos2[k].y <levelSize) && (j + pos2[k].x>=0) && (j + pos2[k].x <levelSize))
+                    if ((levelLayout[i, j] != levelLayout[i+pos2[k].y, j+pos2[k].x]) &&  (allRooms[i, j].wall[k] == 0) )
+                    {
+                            if (Random.Range(0, 5) != 0)
+                                allRooms[i, j].wall[k] = 1;
+                            else
+                            {
+                                int mirrorPos = 0;
+                                if (k == 0 || k == 1) mirrorPos = k + 2;
+                                else if (k == 2) mirrorPos = 0;
+                                else if (k == 3) mirrorPos = 1;
+                                allRooms[i, j].wall[k] = 2;
+                                allRooms[i + pos2[k].y, j + pos2[k].x].wall[mirrorPos] = 3;
+                            }
+
+                        }
+                }
+
+
+        #endregion
+
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        #region cor declaration
+
+        pos[0]= new Cor(-1,0);//left
+        pos[1]=new Cor(1, 0);//right
+        pos[2]= new Cor(0, -1);//up
+        pos[3]=new Cor(0, 1);//down
+
+        pos2[0] = new Cor(0, 0);//left
+        pos2[1] = new Cor(0, 0);//up
+        pos2[2] = new Cor(1, 0);//right
+        pos2[3] = new Cor(0, 1);//down
+
+        pos3[0] = new Cor(-1, 0);//left
+        pos3[1] = new Cor(0, -1);//up
+        pos3[2] = new Cor(1, 0);//right
+        pos3[3] = new Cor(0, 1);//down
+
+        #endregion
+
+
+
+        levelLayout = new int[levelSize, levelSize];
+
+        allRooms = new Room[levelSize, levelSize]; 
+
+
+        for (int i = 0; i < levelSize; i++)
+            for (int j = 0; j < levelSize; j++)
+                allRooms[i,j] = new Room();
+
+        LevelMaker();
+        PhysicalCreate();
+    }
+
+
+    //popraviti ovo sranje posle gja
+    public void PhysicalCreate()
+    {
+
+        //------------------------------------------------------------------------------------------------------------------------------------------
+        int actualRoomSize = roomSize * 2 + 1;
+      //  int physicalSize = actualRoomSize * levelSize;
+
+        for (int i = 0; i < levelSize ; i++)
+        for (int j = 0; j < levelSize ; j++)
+            { //sve sto ce trebati jednom po sobi da se radi
+              //allRooms[i,j]
+               GameObject curr;
+              for (int k = 0; k < 4; k++)
+                {
+                    if (k == 1 || k == 3)
+                    {
+                        if (allRooms[i, j].wall[k] == 1)
+                        {
+
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if (hWall != null)
+                                {
+                                    curr = Instantiate(hWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize, 1, (j + pos2[k].x) * actualRoomSize + l);
+                                }
+                               else if ((l == actualRoomSize / 2) && (hDoor != null))
+                                {
+                                    curr = Instantiate(hDoor/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize , 1, (j + pos2[k].x) * actualRoomSize+l);
+                                }
+                            }
+                        }
+                        else if (allRooms[i, j].wall[k] == 2)
+                        {
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if ((hWall != null) && (l != actualRoomSize / 2))
+                                {
+                                    curr = Instantiate(hWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize, 1, (j + pos2[k].x) * actualRoomSize + l);
+                                }
+                                else if ((l == actualRoomSize / 2) && (hDoor != null))
+                                {
+                                    curr = Instantiate(hDoor/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize , 1, (j + pos2[k].x) * actualRoomSize+l);
+                                }
+                            }
+                        }
+                    }
+                    else if (k == 0 || k == 2)
+                    {
+                        if (allRooms[i, j].wall[k] == 1)
+                        {
+
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if (vWall!=null)
+                                {
+                                    curr = Instantiate(vWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize + l, 1, (j + pos2[k].x) * actualRoomSize);
+                                }
+                            }
+                        }
+                        else if (allRooms[i, j].wall[k] == 2)
+                        {
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if ((vWall != null)&&(l!=actualRoomSize/2))
+                                {
+                                    curr = Instantiate(vWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize + l, 1, (j + pos2[k].x) * actualRoomSize);
+                                }
+                                else if((l== actualRoomSize / 2)&& (vDoor!= null))
+                                {
+                                    curr = Instantiate(vDoor/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize + l, 1, (j + pos2[k].x) * actualRoomSize);
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        //-----------------------------------------------------------------------------------------------
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}

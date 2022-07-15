@@ -1,0 +1,2 @@
+/*&&
+            mainSoundtrack.time >= mainSoundtrack.clip.length*/

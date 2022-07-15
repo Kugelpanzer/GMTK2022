@@ -1,0 +1,39 @@
+    #region player data
+
+    public string moveSpeedText;
+    public string dashReloadTimeText;
+    public string dashPowerText;
+    public string dashDurationText;
+
+    public string damageText;
+    public string bulletDurationText;
+    public string bulletSpeedText;
+    public string magazineText;
+    public string shrapnelText;
+    public string precisionText;
+    public string reloadTimeText;
+    public string timeBetweenBulletsText;
+
+    public string healthText;
+    public string currentHealth;
+    public string armorText;
+
+    #endregion
+
+    public void SaveCurrentPlayerData() 
+    {
+        moveSpeedText= PlayerMovement.playerMovement.MoveSpeed.ToString();
+        dashReloadTimeText = PlayerMovement.playerMovement.DashReload.ToString();
+        dashPowerText = PlayerMovement.playerMovement.DashPower.ToString();
+        dashDurationText = PlayerMovement.playerMovement.DashDuration.ToString();
+        damageText= PlayerShooting.playerShooting.Damage.ToString();
+        bulletDurationText= PlayerShooting.playerShooting.BulletDuration.ToString();
+        bulletSpeedText= PlayerShooting.playerShooting.BulletSpeed.ToString();
+        magazineText= PlayerShooting.playerShooting.magazine.ToString();
+        shrapnelText= PlayerShooting.playerShooting.Shrapnel.ToString();
+        precisionText= PlayerShooting.playerShooting.Precision.ToString();
+        reloadTimeText= PlayerShooting.playerShooting.ReloadTime.ToString();
+        timeBetweenBulletsText= PlayerShooting.playerShooting.TimeBetweenBullets.ToString();
+        healthText= PlayerBase.player.maxHealth.ToString();
+        armorText= PlayerBase.player.armor.ToString();
+    }

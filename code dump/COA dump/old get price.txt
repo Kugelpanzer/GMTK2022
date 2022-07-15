@@ -1,0 +1,13 @@
+    public int GetPrice()
+    {
+        return HeroPrice.GetPrice(this);
+           /* (int)((strength.baseValue.GetValue() +
+            dexterity.baseValue.GetValue() +
+            constitution.baseValue.GetValue() +
+            intelligence.baseValue.GetValue() +
+            wisdom.baseValue.GetValue() +
+            willpower.baseValue.GetValue() +
+            charisma.baseValue.GetValue() +
+            communication.baseValue.GetValue() +
+            demeanor.baseValue.GetValue()) * Math.Pow(1.1, level.GetValue()));*/
+    }

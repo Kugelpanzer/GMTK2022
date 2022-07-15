@@ -1,0 +1,9 @@
+                int currStrength = Random.RandomFromTo(3, 15);
+                int currDexterity = Random.RandomFromTo(3, 15);
+                int currConstitution = Random.RandomFromTo(3, 15);
+                int currIntelligence = Random.RandomFromTo(3, 15);
+                int currWisdom = Random.RandomFromTo(3, 15);
+                int currWillpower = Random.RandomFromTo(3, 15);
+                int currCharisma = Random.RandomFromTo(3, 15);
+                int currCommunication = Random.RandomFromTo(3, 15);
+                int currDemeanor = Random.RandomFromTo(3, 15);

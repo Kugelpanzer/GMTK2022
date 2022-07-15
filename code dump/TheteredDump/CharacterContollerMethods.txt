@@ -1,0 +1,21 @@
+    void StartTurn()
+    {
+   //     Debug.Log("started player turn");
+        inputUsed = true;
+        BaseCharacter.globalSteps = 0;
+        BaseCharacter.characterCanMove = 0;
+        //noSteps = false;
+        startHeroTurn?.Invoke();
+
+    }
+    void EndTurn()
+    {
+       // Debug.Log(TurnController.Turn);
+       // Debug.Log(inputUsed);
+        if (playerTurn==TurnController.Turn && !inputUsed && noSteps)
+        {
+           // Debug.Log("Player turn end!!!");
+            TurnController.Turn = false;
+            inputUsed = false;
+        }
+    }

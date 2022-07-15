@@ -1,0 +1,70 @@
+
+from babovic_brain.logic import *
+
+m = BabovicBrain()
+
+input1 = GeneratorGate(m, 1, 0, False, 10)
+adder1 = AdderGate(m, 1)
+adder2 = AdderGate(m, -1)
+spliter = SplitterGate(m, 1)
+output1 = OutputGate(m, print, True, "/value")
+sub1 = SubstateGate(m, 0, 2)
+chance = ChanceGate(m, 50)
+output3 = OutputGate(m, "print", True, "NEW", "/value")
+
+
+input1.set_out_gate(adder1)
+
+adder1.set_out_gate(spliter)
+spliter.set_out_gate(adder2)
+spliter.set_out_gate(output3)
+adder2.set_out_gate(chance)
+spliter.set_out_gate(adder1)
+spliter.set_out_gate(sub1)
+chance.set_out_gate(sub1)
+#sub gates
+s = SubBabovic(m)
+adder3= AdderGate(s, -1)
+splitter2 = SplitterGate(s)
+output2 = OutputGate(s, print, True, "SUB ", "/value")
+
+
+#s.set_connection(input1, adder3, Constants.IO.INPUT, 0)
+
+input1.set_out_gate(adder3, 0)
+adder3.set_out_gate(splitter2)
+splitter2.set_out_gate(output2)
+splitter2.set_out_gate(adder3)
+m.start()
+
+for i in range(10):
+    m.step()
+
+#m.end()
+
+from babovic_brain.logic.utility.parser import *
+export_state_to_text(m)
+
+
+
+---------------------------------------------------------------------------
+parser shit
+
+
+
+        if isinstance(s,SubBabovic):
+            for d in s.data_list:
+                mg = d[0]
+                sg = d[1]
+                if d[2] == Constants.IO.INPUT:
+                    _curr_gate_line_index = find_gate(sg)
+                    if _output != "|OUTPUT:":
+                        _output += ","
+                    _output += all_gate[mg]
+                    _lines[_curr_gate_line_index] += _output
+                if d[2] == Constants.IO.OUTPUT:
+                    if _output != "|OUTPUT:":
+                        _output += ","
+                    _curr_gate_line_index = find_gate(mg)
+                    _output += all_gate[sg]
+                    _lines[_curr_gate_line_index] += _output

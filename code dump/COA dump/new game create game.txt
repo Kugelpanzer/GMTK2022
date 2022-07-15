@@ -1,0 +1,8 @@
+   /* public void CreateNewGame()
+    {
+        if (File.Exists(Application.persistentDataPath + "/saves/NewGame.json"))
+        {
+            SaveGameManager.SaveGame(new GameLogicSaveData() { guild = new GuildSaveData() { gold = 1000, guildExperiance = 1337, guildLevel = 2 } }, "NewGame", true);
+        }
+        //  SaveGameManager.SaveGame(GameLogic.gameLogic.Save(), saveNameInput.text, true);
+    }*/

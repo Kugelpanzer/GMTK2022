@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class StrategySelect : MonoBehaviour,IPointerClickHandler
+{
+    public List<GameObject> buttonPrefabs = new List<GameObject>();
+    private List<GameObject> tempPrefabs = new List<GameObject>();
+
+    private bool toggle = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void SelectStrategy(StrategyType strategy)
+    {
+        DestroyButtons();
+        toggle = false;
+
+    }
+    public void ClickButton()
+    {
+        if (!toggle)
+        {
+            toggle = true;
+            CreateButtons();
+        }
+        else
+        {
+            toggle = false;
+            DestroyButtons();
+        }
+    }
+    private void CreateButtons()
+    {
+        foreach(GameObject gj in buttonPrefabs)
+        {
+            tempPrefabs.Add(Instantiate(gj, this.gameObject.transform));
+            tempPrefabs[tempPrefabs.Count - 1].GetComponent<StrategyButton>().heroStrategy = this;
+        }
+    }
+
+    private void DestroyButtons()
+    {
+        foreach(GameObject gj in tempPrefabs)
+        {
+            Destroy(gj);
+        }
+        tempPrefabs.Clear();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+}

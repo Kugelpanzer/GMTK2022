@@ -1,0 +1,91 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class CharacterController : MonoBehaviour
+{
+
+    public bool playerTurn=true;
+    public bool inputUsed = true;
+    bool noSteps = false;
+    public static event Action startHeroTurn;
+    public event Action<Dir> activateStep;// activate step sends signal to move character in a direction
+    public static Dictionary<Hero,BaseCharacter> characters = new Dictionary<Hero, BaseCharacter>();
+
+    void StartTurn()
+    {
+   //     Debug.Log("started player turn");
+        inputUsed = true;
+        BaseCharacter.globalSteps = 0;
+        BaseCharacter.characterCanMove = 0;
+        //noSteps = false;
+        startHeroTurn?.Invoke();
+
+    }
+    void EndTurn()
+    {
+       // Debug.Log(TurnController.Turn);
+       // Debug.Log(inputUsed);
+        if (playerTurn==TurnController.Turn && !inputUsed && noSteps)
+        {
+           // Debug.Log("Player turn end!!!");
+            TurnController.Turn = false;
+            inputUsed = false;
+        }
+    }
+    void InputTaken()//activates at start of turn and whenever animation ends
+    {
+        inputUsed = false;
+        activateStep?.Invoke(InputController.dir);
+    }
+    // Start is called before the first frame update
+    void Awake()
+    {
+        //playerTurn = TurnController.Turn;
+        //TurnController.turnHero?.Invoke();
+        playerTurn = true;
+        TurnController.turnHero += StartTurn;
+        TurnController.noAnimation += EndTurn;
+        TurnController.noAnimation += InvokeStep;
+        InputController.moveTaken += InputTaken;
+        InputController.shiftEvent += ShiftHeroes;
+        BaseCharacter.noSteps += SetSteps;
+    }
+    void InvokeStep()
+    {
+        if (playerTurn == TurnController.Turn && !inputUsed)
+        {
+            activateStep?.Invoke(InputController.dir);
+        }
+    }
+    void SetSteps(bool flag)
+    {
+        noSteps = flag;
+    }
+    void ShiftHeroes()
+    {
+        if (characters.Count > 1)
+        {
+            Debug.Log("shift ");
+            Dictionary<Hero, point> newPos = new Dictionary<Hero, point>();
+            foreach(KeyValuePair<Hero,BaseCharacter> ch in characters)
+            {
+                if (characters.ContainsKey(ch.Value.preferredShift))
+                {
+                    BaseCharacter temp = characters[ch.Value.preferredShift];
+                    newPos.Add(ch.Value.heroType, new point(temp.x, temp.y));
+                    ch.Value.SetPostion(temp.x, temp.y);
+                }
+            }
+            foreach (KeyValuePair<Hero, BaseCharacter> ch in characters)
+            {
+                ch.Value.X = newPos[ch.Value.heroType].x;
+                ch.Value.Y = newPos[ch.Value.heroType].y;
+
+            }
+        }
+    }
+    
+
+}

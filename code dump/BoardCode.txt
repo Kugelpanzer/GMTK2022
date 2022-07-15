@@ -1,0 +1,145 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BoardClass:MonoBehaviour
+{
+    #region properties 
+   
+    public int[,] GameBoard=new int[5,5];
+
+    enum GamePiece
+    {
+        EmptyTile = 0,
+        ImmovableBlock = 1,
+        MovableBlock = 2,
+        Ghoul = 3,
+        Peasant = 4,
+        Tower1 = 5,
+        Tower2 = 6,
+        Tower3 = 7,
+        StunnedPeasant = 8
+    }
+
+    #endregion
+
+
+
+    #region methods 
+    public void MoveAllPeasantsW()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Peasant)
+                {
+                    if (GameBoard[i - 1, j] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i - 1, j] = (int)GamePiece.Peasant;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else
+                    {
+                        GameBoard[i, j] = (int)GamePiece.StunnedPeasant;
+                    }
+                }
+            }
+    }
+
+    public void MoveAllPeasantsA()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Peasant)
+                {
+                    if (GameBoard[i, j - 1] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i, j - 1] = (int)GamePiece.Peasant;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else
+                    {
+                        GameBoard[i, j] = (int)GamePiece.StunnedPeasant;
+                    }
+                }
+            }
+    }
+
+
+    public void MoveAllPeasantsS()
+    {
+        for (int i = GameBoard.GetLength(0) - 1; i >= 0; i--)
+            for (int j = GameBoard.GetLength(1) - 1; j >= 0; j--)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Peasant)
+                {
+                    if (GameBoard[i + 1, j] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i + 1, j] = (int)GamePiece.Peasant;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else
+                    {
+                        GameBoard[i, j] = (int)GamePiece.StunnedPeasant;
+                    }
+                }
+            }
+    }
+
+    public void MoveAllPeasantsD()
+    {
+        for (int i = GameBoard.GetLength(0) - 1; i >= 0; i--)
+            for (int j = GameBoard.GetLength(1) - 1; j >= 0; j--)
+            {
+                if (GameBoard[i, j] == (int)GamePiece.Peasant)
+                {
+                    if (GameBoard[i, j + 1] == (int)GamePiece.EmptyTile)
+                    {
+                        GameBoard[i, j + 1] = (int)GamePiece.Peasant;
+                        GameBoard[i, j] = (int)GamePiece.EmptyTile;
+                    }
+                    else
+                    {
+                        GameBoard[i, j] = (int)GamePiece.StunnedPeasant;
+                    }
+                }
+            }
+    }
+
+
+    public void SpawnPeasant(int i, int j)
+    {
+        GameBoard[i, j] = (int)GamePiece.Peasant;
+    }
+
+    public void SpawnWalls()
+    {
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                if (i == 0 || j == 0 || i == GameBoard.GetLength(0) - 1 || j == GameBoard.GetLength(1) - 1)
+                {
+                    GameBoard[i, j] = (int)GamePiece.ImmovableBlock;
+                }
+            }
+    }
+
+    public void DebugBoard()
+    {
+        string debugStr="";
+        for (int i = 0; i < GameBoard.GetLength(0); i++)
+        {
+            debugStr += "\n";
+            for (int j = 0; j < GameBoard.GetLength(1); j++)
+            {
+                debugStr += GameBoard[i, j].ToString();
+            }
+        }
+        Debug.Log(debugStr);
+    }
+    #endregion
+
+
+
+}

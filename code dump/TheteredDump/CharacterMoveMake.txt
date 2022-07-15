@@ -1,0 +1,7 @@
+        if (currStep >0)
+        {
+            MoveDirection(dir);
+            currStep--;
+            GlobalSteps--;
+            return true;
+        }

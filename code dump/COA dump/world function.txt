@@ -1,0 +1,2021 @@
+    public static WorldSaveData ReturnWorld(GameLogicSaveData gameLogicSaveData)
+    {
+        if (gameLogicSaveData.world == null)
+        {
+            gameLogicSaveData.world = new WorldSaveData();
+            KingdomSaveData humanKingdom = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Human Kingdom",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                emblemImage = "humans",
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Inthune Coldlands",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Frostcar",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Tradegulf",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Duskmore",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "The Dark Woods",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Dimbay",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Bleakcall",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Pale Mountains",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Flatborn",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Oakfall",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Steelgate",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Goldsong Plain",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Blackacre",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Lightstar",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Bleakdrift",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Dogburn",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Amberbell",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Lion's Cross",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Western Delta",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Bluestar",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Human, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Human, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                }
+            }
+            };
+            KingdomSaveData dwarfKingdom = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Dwarf Kingdom",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                emblemImage = "dwarves",
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Crimson Highlands",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Fearfair",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Demonview",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Basinrock",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Northern Cliffs",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Dragongrave",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Wildgulf",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Flamemond",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Heart Bluffs",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Ironford",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Fayhelm",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Falldrift",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Eastern Karuian Hights",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Basinpond",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Frostfield",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Cliffgulch",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Darklure Cove",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Oldrock",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Rivervale",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Dwarf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+
+                    }
+                }
+            }
+            };
+            KingdomSaveData altharkinKingdom = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Altharkin Kingdom",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                emblemImage = "altharkin",
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Hungry Tundra",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Shadereach",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Mythwell",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Silent Quagmire",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Deadrock",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Puredale",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "The White Expanse",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Dryhand",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Beachwind",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Lostmouth",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Tall Marina",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Scorched Wastes",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Lost Island",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Hotstrand",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Sandfell",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Zatera",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "God's Garden",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Uquasuf",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Bearside",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Altharkin, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                }
+            }
+            };
+            KingdomSaveData ebolarKingdom = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Eb'olar Kingdom",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                emblemImage = "eb'olar",
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Genora Isles",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Freyhalm",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Glimmerwall",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Wildglen",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Great Fendoria",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Southglen",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Graymire",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Summergrove",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Letoleula",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Broken Islands",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Wintermount",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Emberhollow",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Farwich",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Sioura",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Ebolar, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                }
+            }
+            };
+            KingdomSaveData elvishKingdom = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Elvish Kingdom",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                emblemImage = "Elven Emblem",
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Glistening Meadow",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Westbarrow",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Deaddenn",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Valrose Forest",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Ao Lenora",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Goldhaven",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Goldfell",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Vestkin Cliffs",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Limeharbor",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Roguebreak",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Everburn",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Kenian Bank",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Demonscar",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Maplefalls",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Quickpeak",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Heavenly Woodland",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Smoothspell",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Craggulf",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Oceanvault",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Laughing Marshes",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Ofen Anore",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Deermore",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Elf, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                }
+            }
+            };
+            KingdomSaveData orcishKingdom = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Orcish Kingdom",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                emblemImage = "orcs",
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Western Deadlands",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Xomath Horde",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Eastern Deadlands",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Oggugat Horde",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                },
+                new RegionSaveData()
+                {
+                    name = "Praxis Delta",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Dretkag Horde",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>(){
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mayor, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Mage, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Cleric, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.CrimeBoss, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                    NotablePersonGenerator.GenerateNotablePerson(NotablePersonType.Craftsman, HeroRace.Orc, null).SaveAsNotablePerson(),
+                                }
+                                }
+                            },
+                        }), locationType = LocationType.Town },
+                    }
+                }
+            }
+            };
+
+            KingdomSaveData morninside = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Morninside",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Morninside",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Morninside",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>()
+                            }
+                                }
+                        }), locationType = LocationType.Town },
+                    }
+                },
+            }
+            };
+            KingdomSaveData decafall = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Decafall",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Decafall",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Decafall",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>()
+                            }
+                                }
+                        }), locationType = LocationType.Town },
+                    }
+                },
+            }
+            };
+            KingdomSaveData riverdale = new KingdomSaveData()
+            {
+                organizationSaveData = new OrganizationSaveData()
+                {
+                    baseLocation = "",
+                    name = "Riverdale",
+                    organizationGuid = "",
+                    relationship = new RelationshipSaveData()
+                    {
+                        relationValue = 50
+                    },
+                    notablePersons = new List<NotablePersonSaveData>() { }
+                },
+                regions = new List<RegionSaveData>()
+            {
+                new RegionSaveData()
+                {
+                    name = "Riverdale",
+                    locationSaveDatas = new List<LocationSaveData>()
+                    {
+                        new LocationSaveData() { locationSaveData = JsonUtility.ToJson(new TownSaveData(){
+                            locationGuid = Guid.NewGuid().ToString(),
+                            name = "Riverdale",
+                            crimeRate = 50,
+                            prosperity = 50,
+                            security = 50,
+                            townOrganizationSaveData = new TownOrganizationSaveData()
+                            {
+                                organizationSaveData = new OrganizationSaveData(){
+                                name = "",
+                                notablePersons = new List<NotablePersonSaveData>()
+                            }
+                                }
+                        }), locationType = LocationType.Town },
+                    }
+                },
+            }
+            };
+
+            /* humanKingdom.baseLocation = Location.GetLocation("Lightstar");
+              dwarfKingdom.baseLocation = Location.GetLocation("Dragongrave");
+              altharkinKingdom.baseLocation = Location.GetLocation("Zatera");
+              ebolarKingdom.baseLocation = Location.GetLocation("Letoleula");
+              elvishKingdom.baseLocation = Location.GetLocation("Ao Lenora");
+              orcishKingdom.baseLocation = Location.GetLocation("Xomath Horde");
+
+              morninside.baseLocation = Location.GetLocation("Morninside");
+              decafall.baseLocation = GetLocation("Decafall",allLocation);
+              riverdale.baseLocation = GetLocation("Riverdale",allLocation);*/
+            gameLogicSaveData.world.kingdoms = new List<KingdomSaveData>();
+            gameLogicSaveData.world.kingdoms.Add(humanKingdom);
+            gameLogicSaveData.world.kingdoms.Add(dwarfKingdom);
+            gameLogicSaveData.world.kingdoms.Add(altharkinKingdom);
+            gameLogicSaveData.world.kingdoms.Add(ebolarKingdom);
+            gameLogicSaveData.world.kingdoms.Add(elvishKingdom);
+            gameLogicSaveData.world.kingdoms.Add(orcishKingdom);
+
+            gameLogicSaveData.world.kingdoms.Add(morninside);
+            gameLogicSaveData.world.kingdoms.Add(decafall);
+            gameLogicSaveData.world.kingdoms.Add(riverdale);
+            List<Location> allLocations = new List<Location>();
+            foreach (KingdomSaveData ksd in gameLogicSaveData.world.kingdoms)
+                foreach (RegionSaveData rsd in ksd.regions)
+                    foreach (LocationSaveData lsd in rsd.locationSaveDatas)
+                    {
+                        allLocations.Add(Location.Load(lsd));
+                    }
+
+            Debug.Log("Stiglo do ovde");
+
+            new Road(GetLocation("Morninside", allLocations), GetLocation("Lightstar", allLocations));
+            new Road(GetLocation("Morninside", allLocations), GetLocation("Demonview", allLocations));
+            new Road(GetLocation("Dogburn", allLocations), GetLocation("Lightstar", allLocations));
+            new Road(GetLocation("Lion's Cross", allLocations), GetLocation("Lightstar", allLocations));
+            new Road(GetLocation("Blackacre", allLocations), GetLocation("Dogburn", allLocations));
+            new Road(GetLocation("Blackacre", allLocations), GetLocation("Amberbell", allLocations));
+            new Road(GetLocation("Blackacre", allLocations), GetLocation("Duskmore", allLocations));
+            new Road(GetLocation("Tradegulf", allLocations), GetLocation("Amberbell", allLocations));
+            new Road(GetLocation("Bleakdrift", allLocations), GetLocation("Amberbell", allLocations));
+            new Road(GetLocation("Frostcar", allLocations), GetLocation("Tradegulf", allLocations));
+            new Road(GetLocation("Frostcar", allLocations), GetLocation("Dimbay", allLocations));
+            new Road(GetLocation("Bleakcall", allLocations), GetLocation("Dimbay", allLocations));
+            new Road(GetLocation("Bleakcall", allLocations), GetLocation("Duskmore", allLocations));
+            new Road(GetLocation("Flatborn", allLocations), GetLocation("Duskmore", allLocations));
+            new Road(GetLocation("Flatborn", allLocations), GetLocation("Steelgate", allLocations));
+            new Road(GetLocation("Flatborn", allLocations), GetLocation("Dogburn", allLocations));
+            new Road(GetLocation("Oakfall", allLocations), GetLocation("Steelgate", allLocations));
+            new Road(GetLocation("Oakfall", allLocations), GetLocation("Flamemond", allLocations));
+            new Road(GetLocation("Wildgulf", allLocations), GetLocation("Flamemond", allLocations));
+            new Road(GetLocation("Demonview", allLocations), GetLocation("Flamemond", allLocations));
+            new Road(GetLocation("Demonview", allLocations), GetLocation("Fearfair", allLocations));
+            new Road(GetLocation("Wildgulf", allLocations), GetLocation("Dragongrave", allLocations));
+            new Road(GetLocation("Frostfield", allLocations), GetLocation("Dragongrave", allLocations));
+            new Road(GetLocation("Falldrift", allLocations), GetLocation("Dragongrave", allLocations));
+            new Road(GetLocation("Falldrift", allLocations), GetLocation("Fayhelm", allLocations));
+            new Road(GetLocation("Basinrock", allLocations), GetLocation("Fayhelm", allLocations));
+            new Road(GetLocation("Ironford", allLocations), GetLocation("Fayhelm", allLocations));
+            new Road(GetLocation("Ironford", allLocations), GetLocation("Basinpond", allLocations));
+            new Road(GetLocation("Decafall", allLocations), GetLocation("Fayhelm", allLocations));
+            new Road(GetLocation("Decafall", allLocations), GetLocation("Wildglen", allLocations));
+            new Road(GetLocation("Basinrock", allLocations), GetLocation("Demonview", allLocations));
+            new Road(GetLocation("Decafall", allLocations), GetLocation("Rivervale", allLocations));
+            new Road(GetLocation("Ironford", allLocations), GetLocation("Rivervale", allLocations));
+            new Road(GetLocation("Oldrock", allLocations), GetLocation("Rivervale", allLocations));
+            new Road(GetLocation("Oldrock", allLocations), GetLocation("Shadereach", allLocations));
+            new Road(GetLocation("Oldrock", allLocations), GetLocation("Freyhalm", allLocations));
+            new Road(GetLocation("Basinpond", allLocations), GetLocation("Shadereach", allLocations));
+            new Road(GetLocation("Puredale", allLocations), GetLocation("Shadereach", allLocations));
+            new Road(GetLocation("Mythwell", allLocations), GetLocation("Shadereach", allLocations));
+            new Road(GetLocation("Basinpond", allLocations), GetLocation("Frostfield", allLocations));
+            new Road(GetLocation("Basinpond", allLocations), GetLocation("Cliffgulch", allLocations));
+            new Road(GetLocation("Frostfield", allLocations), GetLocation("Cliffgulch", allLocations));
+            new Road(GetLocation("Puredale", allLocations), GetLocation("Deadrock", allLocations));
+            new Road(GetLocation("Tall Marina", allLocations), GetLocation("Deadrock", allLocations));
+            new Road(GetLocation("Tall Marina", allLocations), GetLocation("Beachwind", allLocations));
+            new Road(GetLocation("Tall Marina", allLocations), GetLocation("Beachwind", allLocations));
+            new Road(GetLocation("Lostmouth", allLocations), GetLocation("Beachwind", allLocations));
+            new Road(GetLocation("Dryhand", allLocations), GetLocation("Beachwind", allLocations));
+            new Road(GetLocation("Lostmouth", allLocations), GetLocation("Mythwell", allLocations));
+            new Road(GetLocation("Lostmouth", allLocations), GetLocation("Zatera", allLocations));
+            new Road(GetLocation("Glimmerwall", allLocations), GetLocation("Zatera", allLocations));
+            new Road(GetLocation("Sandfell", allLocations), GetLocation("Zatera", allLocations));
+            new Road(GetLocation("Hotstrand", allLocations), GetLocation("Zatera", allLocations));
+            new Road(GetLocation("Hotstrand", allLocations), GetLocation("Sandfell", allLocations));
+            new Road(GetLocation("Hotstrand", allLocations), GetLocation("Lost Island", allLocations));
+            new Road(GetLocation("Dryhand", allLocations), GetLocation("Lost Island", allLocations));
+            new Road(GetLocation("Bearside", allLocations), GetLocation("Sandfell", allLocations));
+            new Road(GetLocation("Bearside", allLocations), GetLocation("Uquasuf", allLocations));
+            new Road(GetLocation("Glimmerwall", allLocations), GetLocation("Freyhalm", allLocations));
+            new Road(GetLocation("Glimmerwall", allLocations), GetLocation("Wildglen", allLocations));
+            new Road(GetLocation("Glimmerwall", allLocations), GetLocation("Summergrove", allLocations));
+            new Road(GetLocation("Freyhalm", allLocations), GetLocation("Wildglen", allLocations));
+            new Road(GetLocation("Summergrove", allLocations), GetLocation("Wildglen", allLocations));
+            new Road(GetLocation("Summergrove", allLocations), GetLocation("Riverdale", allLocations));
+            new Road(GetLocation("Summergrove", allLocations), GetLocation("Graymire", allLocations));
+            new Road(GetLocation("Riverdale", allLocations), GetLocation("Graymire", allLocations));
+            new Road(GetLocation("Letoleula", allLocations), GetLocation("Graymire", allLocations));
+            new Road(GetLocation("Letoleula", allLocations), GetLocation("Southglen", allLocations));
+            new Road(GetLocation("Emberhollow", allLocations), GetLocation("Southglen", allLocations));
+            new Road(GetLocation("Farwich", allLocations), GetLocation("Sioura", allLocations));
+            new Road(GetLocation("Farwich", allLocations), GetLocation("Wintermount", allLocations));
+            new Road(GetLocation("Farwich", allLocations), GetLocation("Ofen Anore", allLocations));
+            new Road(GetLocation("Limeharbor", allLocations), GetLocation("Wintermount", allLocations));
+            new Road(GetLocation("Oceanvault", allLocations), GetLocation("Wintermount", allLocations));
+            new Road(GetLocation("Oceanvault", allLocations), GetLocation("Craggulf", allLocations));
+            new Road(GetLocation("Oceanvault", allLocations), GetLocation("Smoothspell", allLocations));
+            new Road(GetLocation("Oceanvault", allLocations), GetLocation("Ofen Anore", allLocations));
+            new Road(GetLocation("Deermore", allLocations), GetLocation("Ofen Anore", allLocations));
+            new Road(GetLocation("Limeharbor", allLocations), GetLocation("Craggulf", allLocations));
+            new Road(GetLocation("Limeharbor", allLocations), GetLocation("Everburn", allLocations));
+            new Road(GetLocation("Roguebreak", allLocations), GetLocation("Everburn", allLocations));
+            new Road(GetLocation("Roguebreak", allLocations), GetLocation("Ao Lenora", allLocations));
+            new Road(GetLocation("Goldhaven", allLocations), GetLocation("Ao Lenora", allLocations));
+            new Road(GetLocation("Goldfell", allLocations), GetLocation("Ao Lenora", allLocations));
+            new Road(GetLocation("Deaddenn", allLocations), GetLocation("Ao Lenora", allLocations));
+            new Road(GetLocation("Goldhaven", allLocations), GetLocation("Westbarrow", allLocations));
+            new Road(GetLocation("Deaddenn", allLocations), GetLocation("Westbarrow", allLocations));
+            new Road(GetLocation("Bluestar", allLocations), GetLocation("Westbarrow", allLocations));
+            new Road(GetLocation("Goldfell", allLocations), GetLocation("Craggulf", allLocations));
+            new Road(GetLocation("Smoothspell", allLocations), GetLocation("Craggulf", allLocations));
+            new Road(GetLocation("Deaddenn", allLocations), GetLocation("Quickpeak", allLocations));
+            new Road(GetLocation("Lion's Cross", allLocations), GetLocation("Quickpeak", allLocations));
+            new Road(GetLocation("Maplefalls", allLocations), GetLocation("Quickpeak", allLocations));
+            new Road(GetLocation("Maplefalls", allLocations), GetLocation("Demonscar", allLocations));
+            new Road(GetLocation("Maplefalls", allLocations), GetLocation("Smoothspell", allLocations));
+            new Road(GetLocation("Deermore", allLocations), GetLocation("Demonscar", allLocations));
+            new Road(GetLocation("Deermore", allLocations), GetLocation("Riverdale", allLocations));
+            new Road(GetLocation("Bluestar", allLocations), GetLocation("Bleakdrift", allLocations));
+            new Road(GetLocation("Lion's Cross", allLocations), GetLocation("Bleakdrift", allLocations));
+
+
+            gameLogicSaveData.world.roadSaveDatas = new List<RoadSaveData>();
+            foreach (Road road in Road.allRoads)
+            {
+                gameLogicSaveData.world.roadSaveDatas.Add(road.Save());
+            }
+            Road.allRoads.Clear();
+            Debug.Log("stiglo do ovde 2");
+        }
+        return gameLogicSaveData.world;
+    }

@@ -1,0 +1,20 @@
+            else if (board[getNextY(), getNextX()].type == Type.Enemy)
+            {
+                EnemyScript enemy = board[getNextY(), getNextX()].GetComponent<EnemyScript>();
+				playerObject.GetComponent<PlayerScript>().AttackAnimationActivate(getNextX(), getNextY());
+                if (enemy.Interact())
+                {
+                    currRepeat--;
+                    
+                    if (currRepeat == 0)
+                    {
+                       // playerObject.GetComponent<PlayerScript>().AttackAnimationDeactivate();
+                        if (board[getNextY(), getNextX()].type == Type.Enemy)
+                            enemy.React();
+                    }
+                }
+                else
+                {
+                    currRepeat = 0;
+                }
+            }

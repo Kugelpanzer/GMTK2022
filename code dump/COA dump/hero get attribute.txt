@@ -1,0 +1,27 @@
+    public Attribute GetAttribute(HeroAttribute heroAttribute)
+    {
+        switch (heroAttribute)
+        {
+            case HeroAttribute.Strength:
+                return strength;
+            case HeroAttribute.Dexterity:
+                return dexterity;
+            case HeroAttribute.Constitution:
+                return constitution;
+            case HeroAttribute.Intelligence:
+                return intelligence;
+            case HeroAttribute.Wisdom:
+                return wisdom;
+            case HeroAttribute.Willpower:
+                return willpower;
+            case HeroAttribute.Charisma:
+                return charisma;
+            case HeroAttribute.Communication:
+                return communication;
+            case HeroAttribute.Demeanor:
+                return demeanor;
+            default:
+                return null;
+
+        }
+    }

@@ -1,0 +1,17 @@
+    public string moveSpeedText;
+    public string dashReloadTimeText;
+    public string dashPowerText;
+    public string dashDurationText;
+
+    public string damageText;
+    public string bulletDurationText;
+    public string bulletSpeedText;
+    public string magazineText;
+    public string shrapnel, Text;
+    public string precisionText;
+    public string reloadTimeText;
+    public string timeBetweenBulletsText;
+
+    public string healthText;
+    public string currentHealth;
+    public string armorText;

@@ -1,0 +1,10 @@
+Ulthwe
+4 wave serpeants twin starcannon 190*4 					-> 760 pts
+5 * wraithguard 1*wraithcannon 4*d-scythe				-> 250 pts 
+6 * banshee 1 * exarch executioner(war shout) 7*21+15+5			-> 167 pts
+6 * banshee 1 * exarch (war shout) 7*21+15				-> 162 pts
+9 * dire avengers 1 * exarch (shreading fire) 10*15+10 			->160pts
+4 * dire avengers 1 * exarch  5*15					->75pts
+4 * dire avengers 1 * exarch  5*15					->75pts
+avatar 									->250pts
+5 * journeyman warlock	enhance/hubble,empower/enervate			->350pts

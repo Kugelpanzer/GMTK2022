@@ -1,0 +1,56 @@
+'''for i in range(1000):
+		if(chance(0.1)):
+			br_chance+=1
+	print(br_chance)'''
+	#print(lerp(2,5,60))
+'''
+	x=[]
+	for i in range(size*ran):
+		x.append(i)
+
+	y=[]
+	for i in range(ran):
+		#y.extend(symph(i+6,[2,3,5,1,4],size))
+		plot(x[i*size:(i*size)+size],symphz(i+103,[150,152],size))
+		plot(x[i * size:(i * size) + size], symphz(i + 104, [150,152], size))
+	#print(symph(2,[2],size))
+	#print(xan(100000))
+	#print(base_convert(5000000,20))
+	xx=[]
+	yy=[]
+	x=0
+
+	show()
+	
+	'''
+	#plt.clf()
+	'''
+	for j in range(100):
+		xx = []
+		yy = []
+		#x = 0
+		for i in range(100):
+			yy.append(poklop(j,i))
+			x+=0.1
+			x=round(x,2)
+			xx.append(x)
+			#print(x)
+		plot(xx, yy)'''
+	#for j in range(100):
+	#	pass
+	'''for i in range(100):
+		yy.append(poklop(24,i))
+		x+=0.1
+		x=round(x,2)
+		xx.append(x)
+		print(x)
+	'''
+	#strr=""
+	#for i in frange(1.0,5.0,0.17):
+	#	print(strr)
+	#	strr=""
+	#	for j in frange(1.0,5.0,0.17):
+	#		br=poklop(j,i)
+	#		strr+=" "+str(br)
+
+	#plot(xx, yy)

@@ -1,0 +1,133 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Linq;
+
+public class LevelUIScript : MonoBehaviour
+{
+    public GUISkin passedLevelSkin;
+    public GUISkin skipedLevelSkin;
+//    public GUISkin unsolvedLevelSkin;
+    LevelController lc;
+    int sceneNumbers;
+    public int menuScenes;
+    int currentLevelIndex;
+    List<int> skipedLevelsIndex;
+
+
+    List<string> levelNameList = new List<string>();
+
+    bool hasSkiped;
+
+    void Awake()
+    {
+       
+        lc = GetComponent<LevelController>();
+        sceneNumbers = SceneManager.sceneCountInBuildSettings;
+        currentLevelIndex = PlayerPrefs.GetInt("Level", 0);
+        skipedLevelsIndex = new List<int>();
+       /* {
+            PlayerPrefs.GetInt("Skiped0", -1),
+            PlayerPrefs.GetInt("Skiped1", -1),
+            PlayerPrefs.GetInt("Skiped2", -1)
+        };*/
+        for(int i = 0; i < LevelController.levelSkips; i++)
+        {
+            PlayerPrefs.GetInt("Skiped" + i.ToString(), -1);
+        }
+        for(int i = 0; i < skipedLevelsIndex.Count; i++)
+        {
+            if (skipedLevelsIndex[i] != -1)
+                hasSkiped = true;
+        }
+
+        for (int i=menuScenes;i< SceneManager.sceneCountInBuildSettings ; i++)
+        {
+            string pathToScene = SceneUtility.GetScenePathByBuildIndex(i );
+            
+            levelNameList.Add(System.IO.Path.GetFileNameWithoutExtension(pathToScene));
+            //Debug.Log(levelNameList[i-menuScenes]);
+
+        }
+        Debug.Log(levelNameList.Count);
+        Debug.Log(sceneNumbers);
+    }
+
+
+    private void OnGUI()
+    {
+        
+        for(int i=0;i<sceneNumbers-menuScenes; i++)
+        {
+            if (!hasSkiped)
+            {
+                if (i <= currentLevelIndex)
+                {
+
+                    //  if (i !=skipedLevelsIndex[j])
+                    if (!skipedLevelsIndex.Contains(i))
+                    {
+                        GUI.skin = passedLevelSkin;
+                        if (GUI.Button(new Rect(10, 10 + i * 45, 200, 40), i.ToString() + " " + levelNameList[i]))
+                        {
+                            //Debug.Log("zzz");
+                            lc.GoToScene(i + menuScenes);
+                        }
+                    }
+                    else
+                    {
+                        GUI.skin = skipedLevelSkin;
+                        if (GUI.Button(new Rect(10, 10 + i * 45, 200, 40), i.ToString() + " " + levelNameList[i]))
+                        {
+                            lc.GoToScene(i + menuScenes);
+                        }
+                    }
+
+                }
+                else
+                {
+                    GUI.skin = passedLevelSkin;
+                    GUI.enabled = false;
+                    if (GUI.Button(new Rect(10, 10 + i * 45, 200, 40), i.ToString() + " " + levelNameList[i]))
+                    {
+                        lc.GoToScene(i + menuScenes);
+                    }
+
+                }
+                GUI.enabled = true;
+
+            }
+
+            
+        }
+    }
+
+    /*
+      void OnGUI()
+    {
+        GUI.skin = s1[cont % s1.Length];
+
+        if (s1.Length == 0)
+        {
+            Debug.LogError("Assign at least 1 skin on the array");
+            return;
+        }
+
+        GUI.Label(new Rect(10, 10, 100, 20), "Hello World!");
+        GUI.Box(new Rect(10, 50, 50, 50), "A BOX");
+
+        if (GUI.Button(new Rect(10, 110, 70, 30), "A button"))
+        {
+            Debug.Log("Button has been pressed");
+        }
+
+        hSliderValue = GUI.HorizontalSlider(new Rect(10, 150, 100, 30), hSliderValue, 0.0F, 10.0F);
+        vSliderValue = GUI.VerticalSlider(new Rect(10, 170, 100, 30), vSliderValue, 10.0F, 0.0F);
+        hSValue = GUI.HorizontalScrollbar(new Rect(10, 210, 100, 30), hSValue, 1.0F, 0.0F, 10.0F);
+        vSValue = GUI.VerticalScrollbar(new Rect(10, 230, 100, 30), vSValue, 1.0F, 10.0F, 0.0F);
+    }
+     
+     
+     */
+}

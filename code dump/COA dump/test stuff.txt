@@ -1,0 +1,14 @@
+
+    public static float sumValue = 0;
+    public static float currSum = 0;
+    public static int counter = 0;
+
+            currSum = 0;
+            currSum = (currStrength + currDexterity + currConstitution + currIntelligence + currWisdom + currWillpower + currCharisma + currCommunication + currDemeanor) / 9;
+            sumValue += currSum;
+            counter++;
+
+        if (counter > 100)
+        {
+            Debug.Log(sumValue / counter);
+        }

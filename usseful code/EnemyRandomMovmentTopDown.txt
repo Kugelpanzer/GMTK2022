@@ -1,0 +1,135 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyMovement : MonoBehaviour
+{
+    public float minMoveDistance;
+    public float maxMoveDistance;
+    public float minTimeIdle;
+    public float maxTimeIdle;
+    public int pathLines = 3;//how many steps does enemy take
+    public bool isIdle; //just statnds
+    public float moveSpeed = 3;
+    public LayerMask wallLayer;
+
+    List<Vector2> path = null;
+
+    private float currentTimeIdle;
+    private Rigidbody2D rb;
+    private bool CheckPathLine(Vector2 origin,Vector2 path)
+    {
+        
+        if (Physics2D.Raycast(origin, path , path.magnitude, wallLayer))
+        {
+
+            return false;
+        }
+
+        return true;
+    }
+    private Vector2 CreatePathLine()
+    {
+        float dist = Random.Range(minMoveDistance, maxMoveDistance);
+        Vector3 randomVector = Shortcuts.RotateVector2(Vector2.zero, Vector2.left, Random.Range(0,360));
+        return randomVector*dist;
+    }
+    private List<Vector2> CreatePath()
+    {
+        Vector2 path;
+        int counter = 0;
+        List<Vector2> allPaths = new List<Vector2>();
+        Vector2 currPos = transform.position;
+        for(int i= 0; i <pathLines*7; i++)
+        {
+            path = CreatePathLine();
+            if (CheckPathLine(currPos,path))
+            {
+                currPos += path;
+                allPaths.Add(path);
+                counter++;
+
+                //just for testing
+                //Debug.DrawLine(transform.position, (Vector2)transform.position + path, Color.white, 5f);
+            }
+            if (counter == pathLines)
+            {
+                for(int j=0; j< allPaths.Count;j++)
+                {
+                   
+                    if (j == 0)
+                    {
+                        allPaths[0] += (Vector2)transform.position;
+                        //Debug.DrawLine(transform.position, (Vector2)transform.position + allPaths[0], Color.white, 5f);
+                        //Debug.DrawLine(transform.position,  allPaths[0], Color.white, 5f);
+                    }
+                    else
+                    {
+                        allPaths[j] += allPaths[j - 1];
+                        // Debug.DrawLine((Vector2)transform.position + allPaths[j-1], (Vector2)transform.position + allPaths[j], Color.white, 5f);
+                        //Debug.DrawLine(allPaths[j - 1], allPaths[j], Color.white, 5f);
+                    }
+                }
+                return allPaths;
+
+            }
+        }
+        return null; 
+    }
+    private void StartMoving()
+    {
+        if(Vector2.Distance(transform.position, path[0]) < GetComponent<CircleCollider2D>().radius * transform.localScale.x+0.1f)
+        {
+            path.RemoveAt(0);
+            if (path.Count == 0)
+            {
+                isIdle = true;
+                path = null;
+            }
+        }
+        else
+        {
+            //Debug.Log("kretanje");
+            //path[0].Normalize();
+            //rb.MovePosition((Vector2)transform.position+(path[0] * Time.fixedDeltaTime * moveSpeed));
+            transform.position = Vector2.MoveTowards(transform.position, path[0], Time.deltaTime * moveSpeed);
+        }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        isIdle = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(isIdle && currentTimeIdle <= 0)
+        {
+            path = CreatePath();
+            if (path != null)
+            {
+                isIdle = false;
+            }
+            currentTimeIdle = Random.Range(minTimeIdle, maxTimeIdle);
+
+        }
+        else if(isIdle && currentTimeIdle > 0)
+        {
+            currentTimeIdle -= Time.deltaTime;
+        }
+        if(path!=null && !isIdle && path.Count>0)
+        {
+            StartMoving();
+        }
+        if (isIdle)
+        {
+            GetComponent<GeganjeScript>().isMoving = false;
+        }
+        else
+        {
+            GetComponent<GeganjeScript>().isMoving = true;
+        }
+     }
+}

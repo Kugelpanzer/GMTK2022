@@ -1,0 +1,5 @@
+        //SaveGameManager.LoadSave(SaveGameManager.LoadGame(Application.persistentDataPath + "/saves/NewGame.json").saveData);
+        /*foreach (KeyValuePair<string, SaveGame> entry in SaveGameManager.GetSaveGamesDict())
+        {
+            Debug.Log(entry.Key);
+        }*/

@@ -1,0 +1,48 @@
+Name Ideas
+Last bastion
+Micro bastion
+Castellion - taken
+Castellionrex
+
+-----------------------------------------------------------------------------------------------
+-Tower
+each tower can be N block big
+	-attack tower (shoots arows)
+	-explosion tower
+	-walltower (has to be placed on ground or other wall towers)
+	-double damage (is a 0.5 point spike that when placed nothing can be placed on top)
+	-small tower (0.5 can be placed on a small place) does less damage but high range
+	-slow tower
+	-flame tower (leaves flames on ground that do damage)
+	-rate of fire tower (increases rate of fire)
+	-damage tower(module)
+	-support tower?? (increases maximum height of tower by 3)
+	-elevator (makes entire tower buff on each weapon)
+	-bridge (all the buffs from the bridged tower and above aply to towers below)?? 
+	-spiked wall (upgrade zidove koji diluju damage)
+	
+
+-economy towers
+	-increases gold gained when enemy is killed with this tower
+	-produces gold each second
+	
+
+-army towers
+	-barracks (spawns aly troops)
+	-
+
+------------------------------------------------------------------------------------------------
+Cards 
+	
+	-basic tower (always have it in your deck)
+	-legendary(once spawned dont spawn again)
+
+
+------------------------------------------------------------------------------------------------
+Upgrades -per run/ over game ??
+
+	-permanent wall
+
+----------------------------------------------------------------------------------------------
+
+	

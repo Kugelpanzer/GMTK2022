@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class StrategyButton : MonoBehaviour,IPointerClickHandler
+{
+
+    public StrategySelect heroStrategy=null;
+    public StrategyType strategy;
+
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        heroStrategy.SelectStrategy(strategy);
+    }
+}

@@ -1,0 +1,110 @@
+
+	pocket a[10];
+	char chList[10];
+
+	smartBit sb,sb2;
+
+   // a[5].connection.push_back(&(a[2].preActive)); // should be active
+    //a[5].connection.push_back(&(a[4].preActive));
+    //a[5].connection.push_back(&(a[6].active));
+    a[2].connection.push_back(&(sb.preActive));
+
+
+	// pointing mem to char chList ------------------------------------------------------------------------------------
+
+    for(int i=0;i<10;i++){
+		a[i].memPoint=&chList[i];
+
+		// sets static memory
+		a[i].staticMem='a'+i;
+		a[i].id=i;
+        //chList[i]='a'+i;
+		//sets chList
+		if(i%2==0)
+		chList[i]='a'+i;
+		else chList[i]='0';
+	}
+	for(int i=0;i<10;i++){
+	    if(((i-1)%2)==0)
+		chList[i]='a'+i;
+		else chList[i]='0';
+
+	}
+
+
+    //pushing connections in to neur -----------------------------------------------------------------------------------
+	 for(int i=0;i<10;i++){
+	     sb.syn.push_back(a[i]);
+         sb.curSyn++;
+         sb2.syn.push_back(a[i]);
+         sb2.curSyn++;
+
+	}
+
+	for(int i=0;i<10;i++){
+		if(a[i].check_active()==true) {
+			std::cout<<i<<"\n";
+		}
+	}
+	cout<<"zavrseno";
+
+	sb.active_neur();
+	cout<<"\n";
+
+	sb.active_neur();
+    cout<<"\n";
+
+
+
+	sb.active_neur();
+    cout<<"\n";
+
+   sb.active_neur();
+    cout<<"\n";
+
+    sb.idb=5;
+    block bb;
+    bb.neur.push_back(sb);
+    bb.neur.push_back(sb2);
+    bb.allow_block(&bb);
+
+    bb.pass();
+    cout<<"\n";
+    bb.pass();
+    cout<<"\n";
+    bb.pass();
+    cout<<"\n";
+    bb.pass();
+    cout<<"\n";
+
+
+
+    cout<<"\nTEST \n";
+    std::vector<smartBit> sb_list;
+    sb_list.push_back(smartBit());
+    sb_list.push_back(smartBit());
+    block bb2=block(sb_list,4,5,true);
+    sb_list.clear();
+    std::cout<<bb2.neur.size();
+    std::cout<<"\n"<<sb_list.size();
+
+    string file_name;
+    cin>>file_name;
+    parse_file(file_name);
+
+    cout<<input_list.size();
+    /*
+    sb_list.clear();
+    sb_list.push_front(smartBit());
+    sb_list.push_front(smartBit());
+    block bb2=block(sb_list,4,5,true);
+    std::cout<<bb2.neur.size();*/
+
+    //brain.push_back(block())textPocket::
+   /* ofstream myfile;
+
+
+   /* textPocket p;
+    p.connection.push_back(textPocket::con{2,3});
+    p.connection.push_back(textPocket::con{6,3});
+    std::cout<< p.connection[1].b;*/

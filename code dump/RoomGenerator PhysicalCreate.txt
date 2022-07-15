@@ -1,0 +1,88 @@
+    public void PhysicalCreate()
+    {
+
+        //------------------------------------------------------------------------------------------------------------------------------------------
+        int actualRoomSize = roomSize * 2 + 1;
+      //  int physicalSize = actualRoomSize * levelSize;
+
+        for (int i = 0; i < levelSize ; i++)
+        for (int j = 0; j < levelSize ; j++)
+            { //sve sto ce trebati jednom po sobi da se radi
+              //allRooms[i,j]
+               GameObject curr;
+              for (int k = 0; k < 4; k++)
+                {
+                    if (k == 1 || k == 3)
+                    {
+                        if (allRooms[i, j].wall[k] == 1)
+                        {
+
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if (hWall != null)
+                                {
+                                    curr = Instantiate(hWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize, 1, (j + pos2[k].x) * actualRoomSize + l);
+                                }
+                               else if ((l == actualRoomSize / 2) && (hDoor != null))
+                                {
+                                    curr = Instantiate(hDoor/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize , 1, (j + pos2[k].x) * actualRoomSize+l);
+                                }
+                            }
+                        }
+                        else if (allRooms[i, j].wall[k] == 2)
+                        {
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if ((hWall != null) && (l != actualRoomSize / 2))
+                                {
+                                    curr = Instantiate(hWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize, 1, (j + pos2[k].x) * actualRoomSize + l);
+                                }
+                                else if ((l == actualRoomSize / 2) && (hDoor != null))
+                                {
+                                    curr = Instantiate(hDoor/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize , 1, (j + pos2[k].x) * actualRoomSize+l);
+                                }
+                            }
+                        }
+                    }
+                    else if (k == 0 || k == 2)
+                    {
+                        if (allRooms[i, j].wall[k] == 1)
+                        {
+
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if (vWall!=null)
+                                {
+                                    curr = Instantiate(vWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize + l, 1, (j + pos2[k].x) * actualRoomSize);
+                                }
+                            }
+                        }
+                        else if (allRooms[i, j].wall[k] == 2)
+                        {
+                            for (int l = 0; l < actualRoomSize; l++)
+                            {
+                                if ((vWall != null)&&(l!=actualRoomSize/2))
+                                {
+                                    curr = Instantiate(vWall/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize + l, 1, (j + pos2[k].x) * actualRoomSize);
+                                }
+                                else if((l== actualRoomSize / 2)&& (vDoor!= null))
+                                {
+                                    curr = Instantiate(vDoor/*, gameObject.transform*/);
+                                    curr.transform.localPosition += new Vector3((i + pos2[k].y) * actualRoomSize + l, 1, (j + pos2[k].x) * actualRoomSize);
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        //-----------------------------------------------------------------------------------------------
+    }

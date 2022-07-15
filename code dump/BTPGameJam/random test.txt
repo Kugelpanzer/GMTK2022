@@ -1,0 +1,12 @@
+        List<Upgrade> u = new List<Upgrade>();
+        Dictionary<Upgrade,int> nesto = new Dictionary<Upgrade, int>();
+        for(int i=0; i<10; i++)
+        {
+            Upgrade uu = Upgrade.GenerateUpgrade();
+            u.Add(uu);
+            nesto.Add(uu, i);
+        }
+        if (nesto[u[2]] == 2)
+            Debug.Log("Da");
+        if(nesto[u[3]] == 2)
+            Debug.Log("ne");

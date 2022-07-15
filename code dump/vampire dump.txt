@@ -1,0 +1,52 @@
+    Rigidbody2D rb;
+    public float gravity = 10;
+    public float speed = 10;
+    // Start is called before the first frame update
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+    public void PlayerMove()
+    {
+        //if(Input.GetButton("Horizontal"))
+        //rb.MovePosition(transform.position + new Vector3(Input.GetAxis("Horizontal")*speed, -gravity, 0)*Time.deltaTime);
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            rb.MovePosition(transform.position + new Vector3(speed, -gravity, 0) * Time.deltaTime);
+        }
+        else if(Input.GetAxis("Horizontal") < 0)
+        {
+            rb.MovePosition(transform.position + new Vector3(-speed, -gravity, 0) * Time.deltaTime);
+        }
+        else
+        {
+            rb.MovePosition(transform.position + new Vector3(0, -gravity, 0) * Time.deltaTime);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        PlayerMove();
+    }
+
+//===============================================================================================================================
+
+            moveInput = Input.GetAxis("Horizontal")*speed;
+
+
+
+//======================================
+-1.27404
+-1.27404
+-1.274115
+-1.27404
+-1.27404
+
+
+
+
+
+
+

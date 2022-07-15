@@ -1,0 +1,20 @@
+#fun rule
+	'''ruleList = Initialize("eq(2):*1",
+						  "eq(1):+2",
+						  "ge(3):*0"
+						  )'''
+	globalBoard[22][22] = 1
+	globalBoard[22][23] = 1
+	globalBoard[22][24] = 1
+
+	#game of life rules
+	'''ruleList = Initialize("eq(3):*1",
+						  "ge(4):*0",
+						  "le(1):*0"
+						  )'''
+	#game of life glider
+	'''globalBoard[22][22]=1
+	globalBoard[22][23]=1
+	globalBoard[22][24]=1
+	globalBoard[21][24]=1
+	globalBoard[20][23]=1'''

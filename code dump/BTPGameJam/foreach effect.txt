@@ -1,0 +1,6 @@
+        foreach(EffectScriptable ef in effectData)
+        {
+            Debug.Log("__________________________________________");
+            Debug.Log(ef.type);
+            Debug.Log(ef.step);
+        }

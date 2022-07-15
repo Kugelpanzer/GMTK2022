@@ -1,0 +1,37 @@
+      /*  List<Road> result = new List<Road>();
+
+        var startRoads = Road.allRoads.FindAll(r => r.end1 == start || r.end2 == start);
+        var endRoad = startRoads.FirstOrDefault(r => r.end1 == end || r.end2 == end);
+
+        // Found road to end
+        if (endRoad != null)
+        {
+            return new List<Road>() { endRoad };
+        }
+
+        var neigbourUnvisited = startRoads.Select(r => r.end1 == start ? r.end2 : r.end1).Where(r => !visited.Contains(r)).ToList();
+
+        if (neigbourUnvisited.Count == 0)
+        {
+            return new List<Road>();
+        }
+
+        visited.AddRange(neigbourUnvisited);
+
+        Dictionary<Location, List<Road>> roadsFromNearset = new Dictionary<Location, List<Road>>();
+
+        neigbourUnvisited.ForEach(n => roadsFromNearset[n] = CalcShortestRoadBetweenLocations(n, end));
+
+        neigbourUnvisited.RemoveAll(n => roadsFromNearset[n].Sum(r => r.length) == 0);
+
+        if (neigbourUnvisited.Count == 0)
+        {
+            return new List<Road>();
+        }
+
+        Location l = neigbourUnvisited.MinBy(n => roadsFromNearset[n].Sum(r => r.length) + startRoads.Find(r => r.end1 == n || r.end2 == n).length);
+
+        result.Add(startRoads.Find(r => r.end1 == l || r.end2 == l));
+        result.AddRange(roadsFromNearset[l]);
+
+        return result;*/

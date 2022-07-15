@@ -1,0 +1,120 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public static PlayerMovement playerMovement;
+
+    public float moveSpeed = 1;
+
+    [Tooltip("Dash reload in seconds")]
+    public float dashReload = 1;
+    public int dashPower = 10;
+    public float dashDuration = 0.2f;
+
+
+    public bool dashing
+    {
+        get { return checkDash; }
+    }
+
+    #region private properties
+    private bool checkDash;
+    private float currDashTime;
+    private int currDashPower;
+    private float currDashReload;
+
+
+    private Vector2 vLeft, vRight, vUp, vDown;
+    private Vector3 moveVector;
+    private Vector3 dashingVector;
+
+    private Rigidbody2D rb;
+    #endregion
+    private void Dashing()
+    {
+        if (currDashTime > 0)
+        {
+            currDashPower = dashPower;
+            currDashTime-=Time.fixedDeltaTime;
+        }
+        else
+        {
+            currDashPower = 0;
+            checkDash = false;
+        }
+        if (currDashReload > 0)
+        {
+            currDashReload -= Time.fixedDeltaTime;
+        }
+
+    }
+
+
+    private void MoveScript()
+    {
+        vLeft = Vector2.zero;
+        vRight = Vector2.zero;
+        vUp = Vector2.zero;
+        vDown = Vector2.zero;
+
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            vRight = -Vector2.right;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            vUp = Vector2.up;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            vLeft = Vector2.right;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            vUp = -Vector2.up;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (currDashReload <= 0)
+            {
+                currDashTime = dashDuration;
+                currDashReload = dashReload;
+                dashingVector =moveVector;
+                checkDash = true;
+            }
+        }
+        if (currDashPower == 0)
+        {
+            moveVector = (vLeft + vRight + vUp + vDown).normalized * moveSpeed  ;
+        }
+        else
+        {
+            moveVector = dashingVector * currDashPower;
+        }
+        //transform.Translate(moveVector*Time.deltaTime);
+        rb.MovePosition(transform.position + (moveVector * Time.fixedDeltaTime));
+    }
+
+    private void Awake()
+    {
+        if (playerMovement == null)
+        {
+            playerMovement = this; 
+        }
+        rb = GetComponent<Rigidbody2D>();
+    }
+    void Start()
+    {
+        
+    }
+
+    void FixedUpdate()
+    {
+        MoveScript();
+        Dashing();
+    }
+}

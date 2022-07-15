@@ -1,0 +1,25 @@
+      /*  GameLogic.gameLogic.Load(new GameLogicSaveData() { guild = new GuildSaveData() { gold = 1000, guildExperiance = 1337, guildLevel = 2 } });
+        GameUIManager.gameUIManager.SetupOnLoad();*/
+
+      //  IsMainMenuVisible.SetValue(false);
+        Debug.Log(Application.persistentDataPath + "/saves/NewGame.json");
+        if(File.Exists(Application.persistentDataPath + "/saves/NewGame.json"))
+        {
+            Debug.Log("FAJL POSTOJI");
+        }
+        else
+        {
+            Debug.Log("FAJL NEPOSTOJI");
+        }
+        if (!File.Exists(Application.persistentDataPath + "/saves/NewGame.json"))
+        {
+            Debug.Log("IZVRSENO");
+            
+            //NewGame.newGame.Load(new GameLogicSaveData() { guild = new GuildSaveData() { gold = 1000, guildExperiance = 1337, guildLevel = 2 } });
+            SaveGameManager.SaveGame(new GameLogicSaveData() { guild = new GuildSaveData() { gold = 1000, guildExperiance = 1337, guildLevel = 2 } ,world= NewGame.ReturnWorld()}, "NewGame", true);
+           
+        }
+        else
+        {
+            SaveGameManager.LoadSave(SaveGames.GetValue()[0].saveData);
+        }

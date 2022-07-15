@@ -1,0 +1,69 @@
+    public void SetTextReference()
+    {
+        leftText = leftCharacterBinding.gameObject.transform.GetChild(0).gameObject.GetComponent<HeroTextCard>().text;
+        rightText = rightCharacterBinding.gameObject.transform.GetChild(0).gameObject.GetComponent<HeroTextCard>().text;
+        if (speechData.GetValue().characterSpeaking == CharacterSpeaking.left)
+        {
+            rightText.text = speechData.GetValue().rightText;
+            currentText = leftText;
+        }
+        else
+        {
+            leftText.text = speechData.GetValue().leftText;
+            currentText = rightText;
+        }
+    }
+
+
+    public void SetupNewSpeech()
+    {
+        SetTarget();
+
+        textIndex = 0;
+        currentText = null;
+
+        if (speechData.GetValue().characterSpeaking == CharacterSpeaking.left)
+        {
+            leftText.text = "";
+            finalText = speechData.GetValue().leftText;
+            rightText.text = speechData.GetValue().rightText;
+            currentText = leftText;
+        }
+        else
+        {
+            rightText.text = "";
+            finalText = speechData.GetValue().rightText;
+            leftText.text = speechData.GetValue().leftText;
+            currentText = rightText;
+         //   Debug.Log(currentText.name);
+         //   Debug.Log(currentText.text.Length);
+        }
+        if (currentText == null) Debug.Log("DA LI JE NULL");
+    }
+
+    private void SetTarget()
+    {
+        speechData = new Watchable<CharacterSpeechData>(conversation.currentSpeech);
+
+        leftCharacterBinding.SetTarget(speechData);
+        rightCharacterBinding.SetTarget(speechData);
+
+        leftText = leftCharacterBinding.gameObject.transform.GetChild(0).gameObject.GetComponent<HeroTextCard>().text;
+        rightText = rightCharacterBinding.gameObject.transform.GetChild(0).gameObject.GetComponent<HeroTextCard>().text;
+    }
+
+    public bool NextCharacter()
+    {
+        SetTarget();
+        if (currentText.text.Length < finalText.Length)
+        {
+            currentText.text += finalText[textIndex];
+            textIndex++;
+            return true;
+        }
+        else
+        {
+            //SetBinding();
+            return false;
+        }
+    }

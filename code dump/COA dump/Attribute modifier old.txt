@@ -1,0 +1,43 @@
+public class AttributeModifier
+{
+    // TODO Add modification source
+
+    public int baseModifierValue;
+
+    public Watchable<bool> condition;
+
+    public AttributeModifier(AttributeModifierSaveData attributeModifierSaveData, Watchable<bool> condition = null): this(attributeModifierSaveData.baseModifierValue, condition)
+    {
+    }
+
+    public AttributeModifier(int amount, Watchable<bool> condition = null)
+    {
+        baseModifierValue = amount;
+        this.condition = condition;
+    }
+
+    public int GetModificationValue()
+    {
+        if (condition != null && !condition.Value)
+        {
+            return 0;
+        }
+        return baseModifierValue;
+    }
+
+    public AttributeModifierSaveData Save()
+    {
+        AttributeModifierSaveData result = new AttributeModifierSaveData();
+
+        result.baseModifierValue = baseModifierValue;
+
+        return result;
+
+    }
+}
+
+[Serializable]
+public class AttributeModifierSaveData
+{
+    public int baseModifierValue;
+}

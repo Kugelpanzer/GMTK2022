@@ -1,0 +1,168 @@
+            if (c.argument.Count > 0)
+            {
+                _cor = NumberToCor(c.argument[0]);
+            }
+            else
+            {
+                _cor.x = 0;
+                _cor.y = 0;
+            }
+
+
+
+//===================================================================
+
+
+
+                   /* for(int i = 0; i < 5; i++)
+                        for (int j = 0; j < 5; j++)
+                        {
+                            Debug.Log(b.SelectMove[i, j]);
+                        }*/
+//=====================================================================
+
+
+            /*if((codePointer.argument.Count>0)&&((codePointer.name=="PAUSE") || (codePointer.name == "TERMINATE")))
+            {
+                Debug.Log(44);
+                codePointer.name = "BUG";   
+                CodeLines.Add(codePointer);
+            }
+            else
+            {
+                Debug.Log(55);
+                codePointer.name = "BUG";
+                CodeLines.Add(codePointer);
+            }*/
+
+//=====================================================================
+
+        /*float rotateStep = rotationSpeed * Time.deltaTime;
+
+        //Vector3 targetDir = new Vector3(0, -1, 0) - transform.position;
+
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(0, 1, 0), rotateStep, 0.0f);
+        if (transform.rotation != Quaternion.LookRotation(newDir))
+        {
+            transform.rotation = Quaternion.LookRotation(newDir);
+            return false;
+        }
+        else
+        {
+            return true;
+        }*/
+
+
+/*571.3639
+338.9335
+10.81516*/
+
+
+
+ /*       if (Input.GetKey(KeyCode.G)&& (flag==true))
+        {
+            t += 30;
+            flag = false;
+        }
+        if(tt==60)
+        {
+            if (flag == false) {
+                flag = true;
+                tt = 0; }
+        }
+        else
+        {
+            tt++;
+        }*/
+      
+
+//===========================================================================
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class RoomGenerator : MonoBehaviour {
+
+
+    public int roomSize;
+    public int roomNumber;
+    public int levelSize=0;
+
+    public GameObject hWall, vWall;
+
+    
+
+    public void LevelMaker()
+    {
+        int[,] levelLayout = new int[levelSize, levelSize];
+        //value of -1 means no room
+        int freeSpace = levelSize * levelSize - roomNumber;
+
+        #region levelLayaut setup
+        for (int i = 0; i < levelSize; i++)
+            for (int j = 0; j < levelSize; j++)
+                levelLayout[i, j] = -1;
+        #endregion
+
+
+
+        int br = 0,curNum=roomNumber;
+        while(curNum=0)
+        {
+            int xx = Random.Range(0, levelSize) ,yy= Random.Range(0, levelSize);
+            if (levelLayout[yy, xx] == -1)
+            {
+                levelLayout[yy, xx] = br;
+                br++;
+                roomNumber--;
+            }
+
+
+        }
+
+
+        string test = "";
+        for (int i = 0; i < levelSize; i++)
+        {
+            test += "\n";
+            for (int j = 0; j < levelSize; j++)
+                test += levelLayout[i, j];
+        }
+        Debug.Log(test);
+    }
+
+	// Use this for initialization
+	void Start () {
+        LevelMaker();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+}
+//=====================================================================
+
+        int ex=0, ey=0;
+        /*if ((x > 0)&& (y < levelSize-1)) ex = Random.Range(-1,1);
+        else if (x == 0) ex = Random.Range(0, 1);
+        else if (x == levelSize - 1) ex = Random.Range(-1, 0);
+
+        if ((y>0)&&(y<levelSize-1)) ey = Random.Range(-1, 1);
+        else if(y==0) ey = Random.Range(0, 1);
+        else if(y == levelSize - 1)  ey = Random.Range(-1, 0);
+        */
+.
+//===========================================================================
+	background-image: url("../pictures/Wallpapper1.png");
+    background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+
+
+
+	margin:30px 10%;
+	float:left;
+

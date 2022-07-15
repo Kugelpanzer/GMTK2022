@@ -1,0 +1,190 @@
+#region jebali vas 46 slucajeva
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 1, 0, 0 },
+            { 1, 0, 0 } }), new cor(0, 0));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 0, 0, 0 },
+            { 0, 0, 0 } }), new cor(1, 0));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 0, 0, 1 },
+            { 0, 0, 1 } }), new cor(2, 0));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 1, 0, 1 },
+            { 1, 0, 1 } }), new cor(3, 0));
+        spriteCor.Add(GenerateKey(new int[,] { 
+            { 1, 1, 1 }, 
+            { 1, 0, 0 }, 
+            { 1, 0, 1 } }), new cor(4, 0));
+        spriteCor.Add(GenerateKey(new int[,] { 
+            { 1, 1, 1 },
+            { 0, 0, 0 },
+            { 0, 0, 1 } }), new cor(5, 0));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 0, 0, 0 },
+            { 1, 0, 0 } }), new cor(6, 0));
+        spriteCor.Add(GenerateKey(new int[,] { 
+            { 1, 1, 1 },
+            { 0, 0, 1 },
+            { 1, 0, 1 } }), new cor(7, 0));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 0, 0, 0 },
+            { 1, 0, 1 } }), new cor(8, 0));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 0 },
+            { 1, 0, 0 } }), new cor(9, 0));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 0 },
+            { 1, 0, 0 },
+            { 1, 0, 0 } }), new cor(0, -1));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 1 },
+            { 0, 0, 1 } }), new cor(2, -1));
+        spriteCor.Add(GenerateKey(new int[,] { 
+            { 1, 0, 1 },
+            { 1, 0, 1 },
+            { 1, 0, 1 } }), new cor(3, -1));
+        spriteCor.Add(GenerateKey(new int[,] { 
+            { 1, 0, 0 },
+            { 1, 0, 0 },
+            { 1, 0, 1 } }), new cor(4, -1));
+        spriteCor.Add(GenerateKey(new int[,] { 
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 1 } }), new cor(5, -1));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 1, 0, 0 } }), new cor(6, -1));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 1 },
+            { 1, 0, 1 } }), new cor(7, -1));
+        spriteCor.Add(GenerateKey(new int[,] { 
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 1, 0, 1 } }), new cor(8, -1));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 1 } }), new cor(9, -1));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 0 },
+            { 1, 0, 0 },
+            { 1, 1, 1 } }), new cor(0, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 1, 1, 1 } }), new cor(1, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 1 },
+            { 1, 1, 1 } }), new cor(2, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 1, 0, 1 },
+            { 1, 1, 1 } }), new cor(3, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 1, 0, 0 },
+            { 1, 0, 0 } }), new cor(4, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 0 },
+            { 0, 0, 0 } }), new cor(5, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 0 } }), new cor(6, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 1 },
+            { 0, 0, 1 } }), new cor(7, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 0 },
+            { 0, 0, 0 } }), new cor(8, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 0 },
+            { 1, 0, 0 } }), new cor(9, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 0 },
+            { 0, 0, 1 } }), new cor(10, -2));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 1, 0, 0 },
+            { 1, 1, 1 } }), new cor(0, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 0, 0, 0 }, 
+            { 1, 1, 1 } }), new cor(1, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 0, 0, 1 },
+            { 1, 1, 1 } }), new cor(2, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 1, 1 },
+            { 1, 0, 1 },
+            { 1, 1, 1 } }), new cor(3, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 1, 0, 0 },
+            { 1, 1, 1 } }), new cor(4, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 0 },
+            { 1, 1, 1 } }), new cor(5, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 0 },
+            { 0, 0, 0 },
+            { 1, 1, 1 } }), new cor(6, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 1 },
+            { 1, 1, 1 } }), new cor(7, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 0 },
+            { 1, 1, 1 } }), new cor(8, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 1 } }), new cor(9, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 0 },
+            { 1, 0, 1 } }), new cor(10, -3));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 1, 0, 0 },
+            { 1, 0, 1 } }), new cor(0, -4));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 1 },
+            { 0, 0, 0 },
+            { 0, 0, 1 } }), new cor(1, -4));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 0 },
+            { 0, 0, 0 },
+            { 1, 0, 0 } }), new cor(2, -4));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 1 },
+            { 1, 0, 1 } }), new cor(3, -4));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 1, 0, 1 },
+            { 0, 0, 0 }, 
+            { 1, 0, 1 } }), new cor(4, -4));
+        spriteCor.Add(GenerateKey(new int[,] {
+            { 0, 0, 0 },
+            { 0, 0, 0 }, 
+            { 0, 0, 0 } }), new cor(5, -4));
+       #endregion

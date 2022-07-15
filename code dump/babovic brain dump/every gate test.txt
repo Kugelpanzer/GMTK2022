@@ -1,0 +1,142 @@
+#adder----------------------------------------------------------------------------------
+m = StateMachine()
+input1 = GeneratorGate(m, 1, 0, True, 10)
+adder = AdderGate(m, 1)
+
+output = OutputGate(m, print, True, "print:", "/value")
+
+input1.set_out_gate(adder)
+
+adder.set_out_gate(output)
+
+#incrementor program increases value to 10 and then stops------------------------------
+m = StateMachine()
+
+input1 = GeneratorGate(m, SignalData(1, 0), True, 10)
+leser1 = LesserGate(m, 10)
+adder1 = AdderGate(m)
+spliter1 = SplitterGate(m, 1)
+output = OutputGate(m, print, True, "print:", "/value")
+
+input1.set_out_gate(adder1)
+adder1.set_out_gate(spliter1)
+spliter1.set_out_gate(output)
+spliter1.set_out_gate(leser1)
+leser1.set_out_gate(adder1)
+
+for i in range(10):
+    m.step()
+
+#markov gate test----------------------------------------------------------------------
+
+from logic import *
+
+m = StateMachine()
+
+input1 = GeneratorGate(m, SignalData(1, 0), True, 10)
+markov = MarkovGate(m)
+output1 = OutputGate(m, print, True, "1")
+output2 = OutputGate(m, print, True, "2")
+output3 = OutputGate(m, print, True, "3")
+input1.set_out_gate(markov)
+markov.set_out_gate(output1)
+markov.set_out_gate(output2)
+markov.set_out_gate(output3)
+
+for i in range(10):
+    m.step()
+
+#mutation test -----------------------------------------------------------------------
+
+from logic import *
+from logic.mutation import Mutation
+
+m = StateMachine()
+
+input1 = GeneratorGate(m, SignalData(1, 0), True, 10)
+markov = MarkovGate(m)
+output1 = OutputGate(m, print, True, "1")
+output2 = OutputGate(m, print, True, "2")
+output3 = OutputGate(m, print, True, "3")
+input1.set_out_gate(markov)
+markov.set_out_gate(output1)
+markov.set_out_gate(output2)
+markov.set_out_gate(output3)
+m.start()
+
+mutate = Mutation(m)
+for i in range(3):
+    print("REMOVING ", mutate.remove_gate())
+    print("ADDING GATE ", mutate.add_gate())
+    print("ADD OUTPUT ", mutate.add_output())
+    print("MUTATE GATE ", mutate.mutate_gate())
+
+for i in range(10):
+    m.step()
+
+
+#input test ----------------------------------------------------------------------------
+from babovic_brain.logic import *
+#from logic.mutation import Mutation
+
+m = BabovicBrain()
+i = 4
+input1 = InputGate(m, 0, i, False)
+
+output1 = OutputGate(m, print, True, "/value")
+output2 = OutputGate(m, print, True, "2")
+output3 = OutputGate(m, print, True, "3")
+
+input1.set_out_gate(output1)
+input1.set_out_gate(output2)
+input1.set_out_gate(output3)
+m.start()
+
+for i in range(10):
+    m.step()
+
+#check later
+
+            if port != -1:
+                for i in range(self.out_ports.index(port)+1, len(self.out_ports)):
+                    self.out_ports[i] += 1
+
+
+# testing sub brain ---------------------------------------------------------------------------------
+from babovic_brain.logic import *
+
+m = BabovicBrain()
+
+i = 1
+input1 = InputGate(m, 0, i, False)
+adder1 = AdderGate(m, 1)
+adder2 = AdderGate(m, -1)
+spliter = SplitterGate(m, 1)
+output1 = OutputGate(m, print, True, "/value")
+sub1 = SubstateGate(m, 0, 2)
+chance = ChanceGate(m, 50)
+
+input1.set_out_gate(adder1)
+#input1.set_out_gate(chance)
+adder1.set_out_gate(spliter)
+spliter.set_out_gate(adder2)
+adder2.set_out_gate(chance)
+spliter.set_out_gate(adder1)
+spliter.set_out_gate(sub1)
+chance.set_out_gate(sub1)
+#sub gates
+s = SubBabovic(m)
+adder3= AdderGate(s, -1)
+splitter2 = SplitterGate(s)
+output2 = OutputGate(s, print, True, "SUB ", "/value")
+
+s.set_connection(input1, adder3, Constants.IO.INPUT, 0)
+adder3.set_out_gate(splitter2)
+splitter2.set_out_gate(output2)
+splitter2.set_out_gate(adder3)
+
+m.start()
+
+for i in range(3):
+    m.step()
+

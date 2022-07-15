@@ -1,0 +1,31 @@
+                gate_type = arguments[0]
+                arguments = arguments[1].split("|")
+                gate_name = arguments[0]
+                out_gate = None
+                gate_arguments = None
+                if len(arguments) == 2:
+                    if re.search("^OUTPUT:", arguments[1]):
+                        out_gate = output_list(arguments[1])
+                    if re.search("^ARGS:", arguments[1]):
+                        gate_arguments = argument_list(arguments[1])
+                if len(arguments) == 3:
+                    if re.search("^OUTPUT:", arguments[1]):
+                        out_gate = output_list(arguments[1])
+                    if re.search("^ARGS:", arguments[1]):
+                        gate_arguments = argument_list(arguments[1])
+                    if re.search("^OUTPUT:", arguments[2]):
+                        out_gate = output_list(arguments[2])
+                    if re.search("^ARGS:", arguments[2]):
+                        gate_arguments = argument_list(arguments[2])
+                gate_name_str = gate_full_name(gate_type)
+                gate_type = get_gate_by_name(gate_type)
+                if gate_arguments is not None:
+                    gate_arguments = [1 if x == 'TRUE' else x for x in gate_arguments]
+                    gate_arguments = [0 if x == 'FALSE' else x for x in gate_arguments]
+
+                if out_gate is not None:
+                    out_gate = out_gate.split(",")
+
+                curr_gate = None
+                exec('curr_gate = '+gate_name_str+'(current_machine[0], *tuple(map(to_int, gate_arguments)))')
+                gate_name_dict[gate_name] = (curr_gate, out_gate)

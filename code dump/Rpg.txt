@@ -1,0 +1,18 @@
+ if (controller.isGrounded && Input.GetButton("Jump")) {
+         moveDirection.y = jumpSpeed;
+     }
+     moveDirection.y -= gravity * Time.deltaTime;
+     controller.Move(moveDirection * Time.deltaTime);
+
+
+
+
+
+        /*if (Input.GetAxis("Horizontal") >0)
+            vUp = transform.right;
+        if (Input.GetAxis("Horizontal") <0)
+            vUp = -transform.right;
+        if (Input.GetAxis("Vertical") >0)
+            vRight = transform.forward;
+        if (Input.GetAxis("Vertical") <0)
+            vRight = -transform.forward;*/

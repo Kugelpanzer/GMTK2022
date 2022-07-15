@@ -1,0 +1,61 @@
+/*std::vector<block>::iterator block_point;
+std::vector<smartBit>::iterator point_neur;
+
+void getBlock(int n){
+block_point=brain.begin();
+for(int i=0;i<n;i++){
+    block_point++;
+    }
+}
+void getNeur(int nBlock,int n){
+getBlock(nBlock);
+point_neur=(*block_point).neur.begin();
+for(int i=0;i<n;i++){
+    point_neur++;
+    }
+}
+*/
+/*void add_block(){
+
+}*/
+/*void set_block(int n_block, int n_neur,int n_con,int n_syn,bool set_forget){
+    block_point=brain.begin();
+
+
+}*/
+
+/*
+void add_new_syn(smartBit &sb,int n_con,char io_list,int ch_in,char value);
+void add_connection(pocket &recive,bool* send);//recive gets a new connection that points to send
+*/
+
+
+/*
+//how will creating brain look
+int n;
+block_create(n);
+    block_point=brain.begin();
+
+    for(int i=0;i<n;i++){
+        .
+        .
+        .
+        set_block(...);
+        while(1){   //add allowed blockes
+            push_allowed_block();
+
+        }
+        block_point++;
+    }
+
+
+*/
+
+
+//extern std::vector<block>::iterator block_point;
+//extern std::vector<smartBit>::iterator point_neur;
+
+
+
+//void getBlock(int n);
+//void getNeur(int nBlock,int n);

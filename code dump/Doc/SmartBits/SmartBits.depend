@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1590931412 source:c:\users\djole\desktop\smartbits\dbconnection.cpp
+	"DbConnection.h"
+
+1580338555 c:\users\djole\desktop\smartbits\dbconnection.h
+	"creator.h"
+	<iostream>
+	<winsock.h>
+	<mysql.h>
+	<fstream>
+	<windows.h>
+
+1590931545 c:\users\djole\desktop\smartbits\creator.h
+	"logicSyn.h"
+	"SmartBit.h"
+
+1528977319 c:\users\djole\desktop\smartbits\logicsyn.h
+	"PocketHead.h"
+
+1580342369 c:\users\djole\desktop\smartbits\pockethead.h
+	<iostream>
+	<vector>
+
+1590931119 c:\users\djole\desktop\smartbits\smartbit.h
+	"PocketHead.h"
+	<list>
+
+1476096933 c:\users\djole\desktop\smartbits\include\\mysql.h
+	<sys/types.h>
+	<winsock.h>
+	"mysql_com.h"
+	"mysql_time.h"
+	"mysql_version.h"
+	"typelib.h"
+	"my_list.h"
+	"my_alloc.h"
+
+1476096946 c:\users\djole\desktop\smartbits\include\\mysql_com.h
+
+1476096972 c:\users\djole\desktop\smartbits\include\\mysql_time.h
+
+1476096983 c:\users\djole\desktop\smartbits\include\\mysql_version.h
+	<custom_conf.h>
+
+1476097123 c:\users\djole\desktop\smartbits\include\\typelib.h
+
+1476097168 c:\users\djole\desktop\smartbits\include\\my_list.h
+
+1476097177 c:\users\djole\desktop\smartbits\include\\my_alloc.h
+
+1565021920 source:c:\users\djole\desktop\smartbits\pockethead.cpp
+	"PocketHead.h"
+
+1590881439 source:c:\users\djole\desktop\smartbits\smartbit.cpp
+	"SmartBit.h"
+

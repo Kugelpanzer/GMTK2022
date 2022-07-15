@@ -1,0 +1,7 @@
+attrmodifier abstracta
+aply na attribut
+
+10.75 	level 1-2
+11.53 	level 3-6
+12.24	level 7-12
+13.2 	level 13-20

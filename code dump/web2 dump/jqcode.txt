@@ -1,0 +1,71 @@
+
+
+
+$(document).ready(function()
+    {
+    getMenu()
+    getGames()
+
+    
+    })
+
+    function writeMenu(data)
+    {
+        console.log(data)
+        for(var i of data){
+            if(i.id!="login")
+                $("#headmenu").append(`	<li  id="${i.idName}"><a href="#">${i.ime}</a></li>`)
+            else
+                $("#headmenu").append(`	<li id="${i.idName}"><a href="login.html">${i.ime}</a></li>`)
+         }   
+    
+    }
+
+    function getMenu(){
+        $.ajax({
+            url:"model/fetchMenu.php",
+            method:"GET",
+            type:"json",
+            success:function(data) {
+                writeMenu(data) 
+                menuBack()
+            }
+        }
+        )
+    }
+
+    function getGames(){
+        $.ajax({
+            url:"model/fetchGames.php",
+            method:"GET",
+            type:"json",
+            success:function(data) {
+                console.log(data)
+               let newData= filterProducts(data)
+                writeSlider(data.filter(x=> x.featured)) 
+
+                $(".imgslider").slick({
+
+                    slidesToShow: 1,
+                    autoplay: true,
+                    infinite: true,
+                    prevArrow: false,
+                    nextArrow: false,
+                    dots:false
+                  });
+                
+            }
+        }
+        )
+    }
+
+    function filterProducts(data){
+        data.filter(x=> x.featured);
+    }
+
+    function writeSlider(data){
+        for(var i of data){
+            if(i.featured)
+               $(".imgslider").append(`<img src="${i.img}" alt="${i.naziv}" />`)
+       }
+    }

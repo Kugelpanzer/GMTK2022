@@ -1,0 +1,10 @@
+public float rotateionSpeed=100;
+    public void Rotate(Vector2 targetPos)
+    {
+        Vector2 vectorToTarget = targetPos - (Vector2)transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle -90, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+    }
+
+//        Rotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)); //Rotate to mouse

@@ -1,0 +1,6 @@
+0 idle
+1 jump
+2 bat glide
+3 bat fly
+4 vamp walk
+5 vamp fall
