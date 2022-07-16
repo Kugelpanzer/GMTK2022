@@ -12,6 +12,20 @@ namespace GMTK2020
 		private int _sideUpIndex = 1;
 		private SideOrientation _sideOrientation = SideOrientation.Up;
 
+		private static Player instance;
+		public static Player Instance
+        {
+            get
+            {
+				if(instance = null)
+                {
+					instance = new Player();
+                }
+
+				return instance;
+            }
+        }
+
 		public PlayerDiceSide GetSideUp ()
 		{
 			return _sides [_sideUpIndex];
@@ -49,45 +63,45 @@ namespace GMTK2020
 		{
 			if ( side == 1 )
 			{
-				if ( orientation == SideOrientation.Up ) return _sides [3];
-				if ( orientation == SideOrientation.Left ) return _sides [5];
-				if ( orientation == SideOrientation.Right ) return _sides [2];
-				if ( orientation == SideOrientation.Down ) return _sides [4];
+				if ( orientation == SideOrientation.Up ) return Instance._sides [3];
+				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
+				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
+				if ( orientation == SideOrientation.Down ) return Instance._sides [4];
 			}
 			if ( side == 2)
 			{
-				if ( orientation == SideOrientation.Up) return _sides [3];
-				if ( orientation == SideOrientation.Left) return _sides [1];
-				if ( orientation == SideOrientation.Right ) return _sides [6];
-				if ( orientation == SideOrientation.Down ) return _sides [4];
+				if ( orientation == SideOrientation.Up) return Instance._sides [3];
+				if ( orientation == SideOrientation.Left) return Instance._sides [1];
+				if ( orientation == SideOrientation.Right ) return Instance._sides [6];
+				if ( orientation == SideOrientation.Down ) return Instance._sides [4];
 			}
 			if ( side == 3 )
 			{
-				if ( orientation == SideOrientation.Up ) return _sides [6];
-				if ( orientation == SideOrientation.Left ) return _sides [5];
-				if ( orientation == SideOrientation.Right ) return _sides [2];
-				if ( orientation == SideOrientation.Down ) return _sides [1];
+				if ( orientation == SideOrientation.Up ) return Instance._sides [6];
+				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
+				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
+				if ( orientation == SideOrientation.Down ) return Instance._sides [1];
 			}
 			if ( side == 4 )
 			{
-				if ( orientation == SideOrientation.Up ) return _sides [1];
-				if ( orientation == SideOrientation.Left ) return _sides [5];
-				if ( orientation == SideOrientation.Right ) return _sides [2];
-				if ( orientation == SideOrientation.Down ) return _sides [6];
+				if ( orientation == SideOrientation.Up ) return Instance._sides [1];
+				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
+				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
+				if ( orientation == SideOrientation.Down ) return Instance._sides [6];
 			}
 			if ( side == 5 )
 			{
-				if ( orientation == SideOrientation.Up ) return _sides [3];
-				if ( orientation == SideOrientation.Left ) return _sides [6];
-				if ( orientation == SideOrientation.Right ) return _sides [1];
-				if ( orientation == SideOrientation.Down ) return _sides [4];
+				if ( orientation == SideOrientation.Up ) return Instance._sides [3];
+				if ( orientation == SideOrientation.Left ) return Instance._sides [6];
+				if ( orientation == SideOrientation.Right ) return Instance._sides [1];
+				if ( orientation == SideOrientation.Down ) return Instance._sides [4];
 			}
 			if ( side == 6 )
 			{
-				if ( orientation == SideOrientation.Up ) return _sides [4];
-				if ( orientation == SideOrientation.Left ) return _sides [5];
-				if ( orientation == SideOrientation.Right ) return _sides [2];
-				if ( orientation == SideOrientation.Down ) return _sides [3];
+				if ( orientation == SideOrientation.Up ) return Instance._sides [4];
+				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
+				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
+				if ( orientation == SideOrientation.Down ) return Instance._sides [3];
 			}
 			return null;
 		}
