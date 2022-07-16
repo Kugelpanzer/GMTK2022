@@ -6,14 +6,14 @@ namespace GMTK2020
 {
     public class Critter : MonoBehaviour
     {
-        protected int _positionX, _positionY;
+        protected int _gridPositionX, _gridPositionY;
 
         protected int _startHealth;
         protected int _maxHealth;
         protected int _health;
 
-        public int PositionX { get => _positionX; set => _positionX = value; }
-        public int PositionY { get => _positionY; set => _positionY = value; }
+        public int GridPositionX { get => _gridPositionX; set => _gridPositionX = value; }
+        public int GridPositionY { get => _gridPositionY; set => _gridPositionY = value; }
         public int StartHealth { get => _startHealth; set => _startHealth = value; }
         public int MaxHealth { get => _maxHealth; }
         public int Health { get => _health; }
@@ -24,10 +24,10 @@ namespace GMTK2020
             _health = _maxHealth;
         }
 
-        public void MoveLeft () => _positionX--;
-        public void MoveRight () => _positionX++;
-        public void MoveUp () => _positionY++;
-        public void MoveDown () => _positionY--;
+        public void MoveLeft () => _gridPositionX--;
+        public void MoveRight () => _gridPositionX++;
+        public void MoveUp () => _gridPositionY++;
+        public void MoveDown () => _gridPositionY--;
 
         public void IncreaseHealth ()
         {

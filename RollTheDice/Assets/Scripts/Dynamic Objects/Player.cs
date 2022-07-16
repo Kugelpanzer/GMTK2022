@@ -26,6 +26,7 @@ namespace GMTK2020
             }
         }
 
+		#region Sides & Orientation
 		public PlayerDiceSide GetSideUp ()
 		{
 			return _sides [_sideUpIndex];
@@ -105,5 +106,6 @@ namespace GMTK2020
 			}
 			return null;
 		}
+		#endregion
 	}
 }
