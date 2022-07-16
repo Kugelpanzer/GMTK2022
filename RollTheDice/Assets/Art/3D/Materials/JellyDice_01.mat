@@ -8,9 +8,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: JellyDice_01
-  m_Shader: {fileID: 4800000, guid: 81ae609a37b59f043ac4256abae11b2e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4609c28b77ae6c04689a8ba2b2fccba7, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHAPREMULTIPLY_ON
+  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -65,25 +67,25 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.795
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimMax: 1
-    - _RimMin: 0.407
-    - _SmoothnessTextureChannel: 0
+    - _RimMin: 0.451
+    - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.8429355, g: 0.990566, b: 0.7803044, a: 1}
+    - _Color: {r: 0.78039217, g: 0.99215686, b: 0.9798094, a: 0.69411767}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 0.47942427, g: 1, b: 0.18396229, a: 0.36078432}
-    - _SColor: {r: 0, g: 0.17274189, b: 1, a: 1}
+    - _HColor: {r: 0.8207547, g: 0.7859113, b: 0.7859113, a: 1}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 0.22745098}
+    - _SColor: {r: 0.032529376, g: 0.05547646, b: 0.16037738, a: 1}
   m_BuildTextureStacks: []
