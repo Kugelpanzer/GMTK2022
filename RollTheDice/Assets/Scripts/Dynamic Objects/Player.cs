@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Critter
+namespace GMTK2020
 {
-	public override void Initialize (int positionX, int positionY)
+	public class Player : Critter
 	{
-		base.Initialize ( positionX, positionY );
-		InitializeHealth ( 3 );
+		private PlayerDiceSide [] _sides = new PlayerDiceSide [6];
 	}
 }
