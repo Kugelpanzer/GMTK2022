@@ -2,61 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Critter : MonoBehaviour
+namespace GMTK2020
 {
-    protected int _positionX, _positionY;
-
-    protected int _health;
-    protected int _maxHealth;
-
-	public int PositionX { get => _positionX; }
-	public int PositionY { get => _positionY; }
-	public int Health { get => _health; }
-	public int MaxHealth { get => _maxHealth; }
-
-	public virtual void Initialize (int positionX, int positionY)
-	{
-        _positionX = positionX;
-        _positionY = positionY;
-
-        InitializeHealth ( 1 );
-	}
-    protected void InitializeHealth (int health)
-	{
-        _maxHealth = health;
-        _health = health;
-	}
-
-    public void MoveLeft () => _positionX--;
-    public void MoveRight () => _positionX++;
-    public void MoveUp () => _positionY++;
-    public void MoveDown () => _positionY--;
-
-    public void IncreaseHealth ()
+    public class Critter : MonoBehaviour
     {
-        if ( _health < _maxHealth ) _health++;
-    }
+        protected int _positionX, _positionY;
 
-    public void DecreaseHealth ()
-	{
-        if (_health > 0 ) _health--;
-	}
+        protected int _startHealth;
+        protected int _maxHealth;
+        protected int _health;
 
-    public void IncreaseMaxHealth ()
-	{
-        _maxHealth++;
-        _health++;
-	}
+        public int PositionX { get => _positionX; set => _positionX = value; }
+        public int PositionY { get => _positionY; set => _positionY = value; }
+        public int StartHealth { get => _startHealth; set => _startHealth = value; }
+        public int MaxHealth { get => _maxHealth; }
+        public int Health { get => _health; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        public virtual void Initialize ()
+        {
+            _maxHealth = _startHealth;
+            _health = _maxHealth;
+        }
 
-    }
+        public void MoveLeft () => _positionX--;
+        public void MoveRight () => _positionX++;
+        public void MoveUp () => _positionY++;
+        public void MoveDown () => _positionY--;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void IncreaseHealth ()
+        {
+            if ( _health < _maxHealth ) _health++;
+        }
+
+        public void DecreaseHealth ()
+        {
+            if ( _health > 0 ) _health--;
+        }
+
+        public void IncreaseMaxHealth ()
+        {
+            _maxHealth++;
+            _health++;
+        }
+
+        // Start is called before the first frame update
+        void Start ()
+        {
+            Initialize ();
+        }
+
+        // Update is called once per frame
+        void Update ()
+        {
+
+        }
     }
 }
