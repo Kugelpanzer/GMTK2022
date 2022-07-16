@@ -1,0 +1,4 @@
+refresh (refreshes all sides except this)
+heal
+double effect (next side activates effect twice)
+roll (next step rolls x steps)
