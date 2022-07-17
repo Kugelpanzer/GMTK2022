@@ -31,10 +31,10 @@ namespace GMTK2020
         private void Awake ()
         {
             if ( Instance == null ) Instance = this;
-            Enemy enemy = gameObject.AddComponent ( typeof ( Enemy ) ) as Enemy;
+           /* Enemy enemy = gameObject.AddComponent ( typeof ( Enemy ) ) as Enemy;
             enemy.GridPositionX = 7; enemy.GridPositionY = 2;
             Enemies.Add ( enemy );
-            enemy.MoveOrAttack ();
+            enemy.MoveOrAttack ();*/
         }
 
         public void ExecuteEnemiesTurn ()
@@ -121,7 +121,7 @@ namespace GMTK2020
             {
                 int x = Player.Instance.GridPositionX - 1;
                 int y = Player.Instance.GridPositionY - 1;
-                grid [x, y] = new MyPathNode () { IsWall = true, X = x, Y = y };
+                //grid [x, y] = new MyPathNode () { IsWall = true, X = x, Y = y };
             }
 
             // Enemies
@@ -143,5 +143,23 @@ namespace GMTK2020
             return grid;
         }
 		#endregion
+
+       public static CritterType[,] CreateBoard()
+       {
+            CritterType[,] board = new CritterType[Instance.GridSizeY,Instance.GridSizeX];
+
+            for(int i = 0; i< Instance.GridSizeY; i++)
+            {
+                for(int j = 0; j < Instance.GridSizeY; j++)
+                {
+                    board[i, j] = CritterType.empty;
+                }
+            }
+            board[Player.Instance.GridPositionY, Player.Instance.GridPositionX] = CritterType.player;
+            foreach (Enemy enemy in Instance.Enemies) board[enemy.GridPositionY,enemy.GridPositionX]=CritterType.enemy;
+            foreach (Wall wall in Instance.Walls) board[wall.GridPositionY, wall.GridPositionX] = CritterType.wall; ;
+
+            return board;
+       }
 	}
 }

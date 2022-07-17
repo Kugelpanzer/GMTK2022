@@ -46,6 +46,7 @@ public class GenerateSides : MonoBehaviour
 
     public void ChangeSide(int side, DiceSideType newType)
     {
+        Debug.Log(side);
         GameObject so = Instantiate(DataController.Instance.allSidesDict[newType].side3DPrefab);
         so.transform.position = transform.position;
         so.transform.parent = transform;

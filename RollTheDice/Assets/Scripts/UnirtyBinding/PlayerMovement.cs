@@ -6,7 +6,6 @@ public class PlayerMovement : BaseMovement
 {
     private float timeLerped = 0f;
     public float timeToLerp = 2f;
-    DiceLogic dice = new DiceLogic();
     Rotation r;
     // Start is called before the first frame update
     public void Start()
@@ -64,7 +63,6 @@ public class PlayerMovement : BaseMovement
                 
                 Player.Instance.MoveDown();
                 CheckUpgrade();
-                dice.Move(key.s);
             }
         }
 

@@ -53,8 +53,8 @@ namespace GMTK2020
                 case key.s:
                     front = topCurr;
                     top = bottom2Curr;
-                    bottom2 = frontCurr;
-                    bottom = bottomCurr;
+                    bottom = frontCurr;
+                    bottom2 = bottomCurr;
                     break;
                 case key.a:
                     front = rightCurr;
@@ -69,7 +69,7 @@ namespace GMTK2020
                     bottom2 = rightCurr;
                     break;
             }
-         Debug.Log(bottom2);
+            Debug.Log(bottom2);
         return front;
         }
     }

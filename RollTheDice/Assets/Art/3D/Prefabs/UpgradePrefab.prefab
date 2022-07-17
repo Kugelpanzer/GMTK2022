@@ -296,4 +296,4 @@ MonoBehaviour:
   GridPositionX: 3
   GridPositionY: 2
   mainGrid: {fileID: 0}
-  upgradeType: 0
+  upgradeType: 2
