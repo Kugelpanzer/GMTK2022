@@ -37,6 +37,10 @@ namespace GMTK2020
         {
             if ( Shield > 0 ) Shield--;
             else if ( _health > 0 ) _health--;
+            if (_health < 0)
+            {
+                
+            }
         }
 
         public void DecreaseHealth (int decrement)
@@ -57,10 +61,6 @@ namespace GMTK2020
             Initialize ();
 		}
 
-		// Start is called before the first frame update
-		void Start () {}
 
-        // Update is called once per frame
-        void Update () {}
     }
 }

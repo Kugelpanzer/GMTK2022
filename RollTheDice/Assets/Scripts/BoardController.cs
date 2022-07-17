@@ -31,10 +31,10 @@ namespace GMTK2020
         private void Awake ()
         {
             if ( Instance == null ) Instance = this;
-           /* Enemy enemy = gameObject.AddComponent ( typeof ( Enemy ) ) as Enemy;
+            Enemy enemy = gameObject.AddComponent ( typeof ( Enemy ) ) as Enemy;
             enemy.GridPositionX = 7; enemy.GridPositionY = 2;
             Enemies.Add ( enemy );
-            enemy.MoveOrAttack ();*/
+            enemy.MoveOrAttack ();
         }
 
         public void ExecuteEnemiesTurn ()
@@ -150,14 +150,18 @@ namespace GMTK2020
 
             for(int i = 0; i< Instance.GridSizeY; i++)
             {
-                for(int j = 0; j < Instance.GridSizeY; j++)
+                for(int j = 0; j < Instance.GridSizeX; j++)
                 {
                     board[i, j] = CritterType.empty;
                 }
             }
             board[Player.Instance.GridPositionY, Player.Instance.GridPositionX] = CritterType.player;
             foreach (Enemy enemy in Instance.Enemies) board[enemy.GridPositionY,enemy.GridPositionX]=CritterType.enemy;
-            foreach (Wall wall in Instance.Walls) board[wall.GridPositionY, wall.GridPositionX] = CritterType.wall; ;
+
+            foreach (Wall wall in Instance.Walls)
+            {
+                board[wall.GridPositionY, wall.GridPositionX] = CritterType.wall;
+            }
 
             return board;
        }
