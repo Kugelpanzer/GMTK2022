@@ -41,5 +41,11 @@ namespace GMTK2020
 			base.MoveDown ();
 			dice.Move ( key.s );
 		}
+
+		public PlayerDiceSide GetTopSide ()
+		{
+			// TODO
+			return null;
+		}
 	}
 }
