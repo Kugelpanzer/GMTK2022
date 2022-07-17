@@ -1,0 +1,142 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+namespace GMTK2020
+{
+    public enum key
+    {
+        w,
+        a,
+        s,
+        d
+    }
+    public class DicePlayer
+    {
+
+        private Side side1 = new Side();
+        private Side side2 = new Side();
+        private Side side3 = new Side();
+        private Side side4 = new Side();
+        private Side side5 = new Side();
+        private Side side6 = new Side();
+
+        public Side currSide;
+        private Pointer pointer;
+
+        public DicePlayer()
+        {
+            Dictionary<string, Side> _dict = new Dictionary<string, Side>();
+            _dict.Add("a", side3);
+            _dict.Add("c", side5);
+            _dict.Add("d", side4);
+            _dict.Add("b", side2);
+            side1.Init(1, _dict);
+
+            _dict = new Dictionary<string, Side>();
+            _dict.Add("e", side3);
+            _dict.Add("c", side1);
+            _dict.Add("f", side4);
+            _dict.Add("b", side6);
+            side2.Init(2, _dict);
+
+            _dict = new Dictionary<string, Side>();
+            _dict.Add("a", side6);
+            _dict.Add("e", side5);
+            _dict.Add("d", side1);
+            _dict.Add("f", side2);
+            side3.Init(3, _dict);
+
+            _dict = new Dictionary<string, Side>();
+            _dict.Add("a", side1);
+            _dict.Add("f", side5);
+            _dict.Add("d", side6);
+            _dict.Add("e", side2);
+            side4.Init(4, _dict);
+
+            _dict = new Dictionary<string, Side>();
+            _dict.Add("f", side3);
+            _dict.Add("c", side6);
+            _dict.Add("e", side4);
+            _dict.Add("b", side1);
+            side5.Init(5, _dict);
+
+            _dict = new Dictionary<string, Side>();
+            _dict.Add("a", side4);
+            _dict.Add("b", side2);
+            _dict.Add("d", side3);
+            _dict.Add("c", side5);
+            side6.Init(6, _dict);
+
+            
+            currSide = side1;
+            pointer = new Pointer();
+
+        }
+        public class Side
+        {
+
+            public void Init(int value, Dictionary<string, Side> sideDict)
+            {
+                this.value = value;
+                this.sideDict = sideDict;
+                int i = 0;
+                foreach (KeyValuePair<string, Side> s in this.sideDict)
+                {
+                    // do something with entry.Value or entry.Key
+                    valueDict.Add(i, s.Key);
+                    i++;
+                }
+            }
+            public int value=0;
+            public Dictionary<string, Side> sideDict = new Dictionary<string, Side>();
+            public Dictionary<int, string> valueDict = new Dictionary<int, string>();
+        }
+        public class Pointer
+        {
+            public string letter = "a";
+            int _value = 0;
+            public int Value
+            {
+                get => _value;
+                set
+                {
+                    if (value > 3)
+                        _value = 0;
+
+                    else if (value < 0)
+                        _value = 3;
+                    else
+                        _value = value;
+
+                }
+            }
+            // int letterValue = 
+        }
+
+    
+        public int Move(key k)
+        {
+            switch (k)
+            {
+                case key.w:
+                    pointer.Value++;
+                    currSide = currSide.sideDict[pointer.letter];
+                    return currSide.value;
+                case key.s:
+                    pointer.Value--;
+                    currSide = currSide.sideDict[pointer.letter];
+                    return currSide.value;
+                case key.a:
+                    currSide = currSide.sideDict[currSide.valueDict[(pointer.Value+1)% 4]];
+                    pointer.letter = currSide.valueDict[(pointer.Value+1) % 4];
+                    return currSide.value;
+                case key.d:
+                    currSide = currSide.sideDict[currSide.valueDict[(pointer.Value+3)%4]];
+                    pointer.letter = currSide.valueDict[(pointer.Value + 3) % 4];
+                    return currSide.value;
+            }
+
+        return -1;
+        }
+    }
+}
