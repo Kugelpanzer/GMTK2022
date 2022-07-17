@@ -12,6 +12,13 @@ public class DataController : MonoBehaviour
     public GameObject vwall;
     public GameObject corner;
 
+    public GameObject floor;
+
+    public GameObject upHalfWall;
+    public GameObject downHalfWall;
+    public GameObject rightHalfWall;
+    public GameObject leftHalfWall;
+
     public int[,] mapGrid; // 1-hwall, 2-vwall, 3 corner
     private void Awake()
     {
@@ -29,21 +36,25 @@ public class DataController : MonoBehaviour
 
         mapGrid = new int[,]
         {
-                 {3,1,1,1,1,1,1,3},
-                 {2,0,0,0,0,0,0,2},
-                 {2,0,0,0,0,0,0,2},
-                 {2,0,0,0,0,0,0,2},
-                 {2,0,0,0,0,0,0,2},
-                 {2,0,0,0,0,0,0,2},
-                 {2,0,0,0,0,0,0,2},
-                 {3,1,1,1,1,1,1,3}
+                 {3,1,1,1,1,1,1,1,3},
+                 {2,0,0,0,0,0,0,0,2},
+                 {2,0,0,0,0,0,0,0,2},
+                 {2,0,0,0,0,0,0,0,2},
+                 {2,0,0,0,0,0,0,0,2},
+                 {2,0,0,0,0,0,0,0,2},
+                 {2,0,0,0,0,0,0,0,2},
+                 {2,0,0,0,0,0,0,0,2},
+                 {3,1,1,1,1,1,1,1,3}
 
         };
 
         for (int i = 0; i < mapGrid.GetLength(0); i++)
             for (int j = 0; j < mapGrid.GetLength(0); j++)
             {
+                GameObject fgj = null;
                 GameObject gj = null;
+                bool cFlag = false;
+               
                 switch (mapGrid[i, j])
                 {
                     case 1:
@@ -54,6 +65,7 @@ public class DataController : MonoBehaviour
                         break;
                     case 3:
                         gj = Instantiate(corner);
+                        cFlag = true;
                         break;
 
                 }
@@ -64,6 +76,39 @@ public class DataController : MonoBehaviour
                     w.GridPositionX = j;
                     w.GridPositionY = i;
                     w.SetToGrid();
+                    gj.transform.position += new Vector3(0, -1, 0);
+                }
+                fgj = Instantiate(floor);
+                Floor f = fgj.GetComponent<Floor>();
+                f.mainGrid = mainGrid;
+                f.GridPositionX = j;
+                f.GridPositionY = i;
+                f.SetToGrid();
+                fgj.transform.position += new Vector3(0, -1, 0);
+
+                if (cFlag)
+                {
+                    
+                    if(BoardController.Instance.isOccupiedTileType(j+1,i)==CritterType.wall )
+                    {
+                        GameObject ggj = Instantiate(rightHalfWall);
+                        ggj.transform.position = gj.transform.position;
+                    }
+                    if (BoardController.Instance.isOccupiedTileType(j - 1, i) == CritterType.wall)
+                    {
+                        GameObject ggj = Instantiate(leftHalfWall);
+                        ggj.transform.position = gj.transform.position;
+                    }
+                    if (BoardController.Instance.isOccupiedTileType(j , i-1) == CritterType.wall)
+                    {
+                        GameObject ggj = Instantiate(upHalfWall);
+                        ggj.transform.position = gj.transform.position;
+                    }
+                    if (BoardController.Instance.isOccupiedTileType(j, i+1) == CritterType.wall)
+                    {
+                        GameObject ggj = Instantiate(downHalfWall);
+                        ggj.transform.position = gj.transform.position;
+                    }
                 }
 
             }

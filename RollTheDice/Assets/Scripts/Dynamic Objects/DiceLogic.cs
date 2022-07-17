@@ -19,7 +19,7 @@ namespace GMTK2020
         public int bottom=4;
         private int bottomCurr=0;
         public int bottom2=6;
-        private int bottom2Curr=0;
+        public int bottom2Curr=0;
         public int left=5;
         private int leftCurr=0;
         public int right=2;
@@ -69,7 +69,7 @@ namespace GMTK2020
                     bottom2 = rightCurr;
                     break;
             }
-
+         Debug.Log(bottom2);
         return front;
         }
     }

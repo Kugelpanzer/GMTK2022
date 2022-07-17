@@ -37,5 +37,7 @@ namespace GMTK2020
 		{
 			Player.Instance.DecreaseHealth ();
 		}
-	}
+
+
+    }
 }

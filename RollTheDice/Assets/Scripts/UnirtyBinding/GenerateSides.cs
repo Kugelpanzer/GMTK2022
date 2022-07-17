@@ -43,6 +43,18 @@ public class GenerateSides : MonoBehaviour
         }
     }
 
+
+    public void ChangeSide(int side, DiceSideType newType)
+    {
+        GameObject so = Instantiate(DataController.Instance.allSidesDict[newType].side3DPrefab);
+        so.transform.position = transform.position;
+        so.transform.parent = transform;
+        so.transform.rotation = sideObject[side - 1].transform.rotation;
+        GameObject old = sideObject[side - 1];
+        sideObject[side - 1] = so;
+        Destroy(old);
+
+    }
     // Update is called once per frame
     void Update()
     {

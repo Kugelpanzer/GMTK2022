@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GMTK2020;
 public class Rotation : MonoBehaviour
 {
     public GameObject prevRot;
-    public float speed = 2f;
     public float time = 2f;
     public float currTime = 0f;
     Quaternion to = new Quaternion();
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+
+
+        RotateOne(to);
+    }
+
+    public bool CanMove()
+    {
+        if (currTime >= time / 2) return true;
+        else return false;
+    }//k == key.a
+    public void Rotate(key k)
+    {
+        if (k == key.a)
         {
             if (currTime >= time / 2)
             {
@@ -20,7 +31,7 @@ public class Rotation : MonoBehaviour
                 to *= transform.rotation;
             }
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (k == key.w)
         {
             if (currTime >= time / 2)
             {
@@ -32,9 +43,8 @@ public class Rotation : MonoBehaviour
 
             //to = Quaternion.FromToRotation(prevRot.transform.up, prevRot.transform.forward);
 
-            Debug.Log(to);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (k == key.d)
         {
 
             if (currTime >= time / 2)
@@ -47,7 +57,7 @@ public class Rotation : MonoBehaviour
 
             //to = Quaternion.FromToRotation(prevRot.transform.up, prevRot.transform.right);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (k == key.s)
         {
             if (currTime >= time / 2)
             {
@@ -59,8 +69,6 @@ public class Rotation : MonoBehaviour
 
             //to = Quaternion.FromToRotation(prevRot.transform.up, -prevRot.transform.forward);
         }
-
-        RotateOne(to);
     }
 
     void RotateOne(Quaternion to)
