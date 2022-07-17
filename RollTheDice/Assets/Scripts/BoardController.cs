@@ -9,8 +9,8 @@ namespace GMTK2020
         public static BoardController Instance;
 
         public int GridSizeX, GridSizeY;
-        public List <Enemy> Enemies = new ();
-        public List <Wall> Walls = new ();
+        public List <Enemy> Enemies = new List<Enemy>();
+        public List <Wall> Walls = new List<Wall>();
 
         private void Awake ()
         {

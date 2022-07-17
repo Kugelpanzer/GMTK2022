@@ -6,7 +6,7 @@ namespace GMTK2020
 {
 	public class Player : Critter
 	{
-		public DiceLogic dice = new ();
+		public DiceLogic dice = new DiceLogic();
 
 		private static Player instance;
 		public static Player Instance

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -296,7 +296,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411102857}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellSize: {x: 2, y: 2, z: 2}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -523,6 +523,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e047760d0f201f8488167e073ddf26a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainGrid: {fileID: 411102858}
+  hwall: {fileID: 6669869333615698333, guid: 836b11da91ef5f0418089957da87c688, type: 3}
+  vwall: {fileID: 6669869333615698333, guid: bd74d6f8f86be304c85de519102c04bd, type: 3}
+  corner: {fileID: 1552344897753779144, guid: d9a68e0ad517f3647b0e2591a7a44cac, type: 3}
   allSides:
   - {fileID: 11400000, guid: 20985b0f2484bdb41818b4bc7b2c59b6, type: 2}
 --- !u!4 &1469974810
@@ -554,6 +558,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridSizeX: 8
   GridSizeY: 8
+  Enemies: []
+  Walls: []
 --- !u!33 &325500616015066884
 MeshFilter:
   m_ObjectHideFlags: 0
