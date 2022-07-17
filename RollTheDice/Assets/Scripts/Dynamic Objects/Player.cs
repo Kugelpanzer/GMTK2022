@@ -6,11 +6,7 @@ namespace GMTK2020
 {
 	public class Player : Critter
 	{
-		private enum SideOrientation { Up, Left, Right, Down }
-
-		private List<PlayerDiceSide> _sides = new List<PlayerDiceSide> ( 6 );
-		private int _sideUpIndex = 1;
-		private SideOrientation _sideOrientation = SideOrientation.Up;
+		public DiceLogic dice = new ();
 
 		private static Player instance;
 		public static Player Instance
@@ -26,86 +22,25 @@ namespace GMTK2020
             }
         }
 
-		#region Sides & Orientation
-		public PlayerDiceSide GetSideUp ()
+		public new void MoveLeft ()
 		{
-			return _sides [_sideUpIndex];
+			base.MoveLeft ();
+			dice.Move ( key.a );
 		}
-		public PlayerDiceSide GetSideDown ()
+		public new void MoveRight ()
 		{
-			return _sides [5 - _sideUpIndex];
+			base.MoveRight ();
+			dice.Move ( key.d );
 		}
-		public PlayerDiceSide GetSideFront ()
+		public new void MoveUp ()
 		{
-			return GetNextSide ( _sideUpIndex, _sideOrientation );
+			base.MoveUp ();
+			dice.Move ( key.w );
 		}
-		public PlayerDiceSide GetSideLeft ()
+		public new void MoveDown ()
 		{
-			if ( _sideOrientation == SideOrientation.Up ) return GetNextSide ( _sideUpIndex, SideOrientation.Left );
-			if ( _sideOrientation == SideOrientation.Left ) return GetNextSide ( _sideUpIndex, SideOrientation.Down );
-			if ( _sideOrientation == SideOrientation.Right ) return GetNextSide ( _sideUpIndex, SideOrientation.Up );
-			if ( _sideOrientation == SideOrientation.Down ) return GetNextSide ( _sideUpIndex, SideOrientation.Right );
-			return null;
+			base.MoveDown ();
+			dice.Move ( key.s );
 		}
-		public PlayerDiceSide GetSideRight ()
-		{
-			if ( _sideOrientation == SideOrientation.Up ) return GetNextSide ( _sideUpIndex, SideOrientation.Right );
-			if ( _sideOrientation == SideOrientation.Left ) return GetNextSide ( _sideUpIndex, SideOrientation.Up );
-			if ( _sideOrientation == SideOrientation.Right ) return GetNextSide ( _sideUpIndex, SideOrientation.Down );
-			if ( _sideOrientation == SideOrientation.Down ) return GetNextSide ( _sideUpIndex, SideOrientation.Left );
-			return null;
-		}
-		public PlayerDiceSide GetSideBack ()
-		{
-			return GetNextSide ( _sideUpIndex, 3 - _sideOrientation );
-		}
-
-		private static PlayerDiceSide GetNextSide (int side, SideOrientation orientation)
-		{
-			if ( side == 1 )
-			{
-				if ( orientation == SideOrientation.Up ) return Instance._sides [3];
-				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
-				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
-				if ( orientation == SideOrientation.Down ) return Instance._sides [4];
-			}
-			if ( side == 2)
-			{
-				if ( orientation == SideOrientation.Up) return Instance._sides [3];
-				if ( orientation == SideOrientation.Left) return Instance._sides [1];
-				if ( orientation == SideOrientation.Right ) return Instance._sides [6];
-				if ( orientation == SideOrientation.Down ) return Instance._sides [4];
-			}
-			if ( side == 3 )
-			{
-				if ( orientation == SideOrientation.Up ) return Instance._sides [6];
-				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
-				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
-				if ( orientation == SideOrientation.Down ) return Instance._sides [1];
-			}
-			if ( side == 4 )
-			{
-				if ( orientation == SideOrientation.Up ) return Instance._sides [1];
-				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
-				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
-				if ( orientation == SideOrientation.Down ) return Instance._sides [6];
-			}
-			if ( side == 5 )
-			{
-				if ( orientation == SideOrientation.Up ) return Instance._sides [3];
-				if ( orientation == SideOrientation.Left ) return Instance._sides [6];
-				if ( orientation == SideOrientation.Right ) return Instance._sides [1];
-				if ( orientation == SideOrientation.Down ) return Instance._sides [4];
-			}
-			if ( side == 6 )
-			{
-				if ( orientation == SideOrientation.Up ) return Instance._sides [4];
-				if ( orientation == SideOrientation.Left ) return Instance._sides [5];
-				if ( orientation == SideOrientation.Right ) return Instance._sides [2];
-				if ( orientation == SideOrientation.Down ) return Instance._sides [3];
-			}
-			return null;
-		}
-		#endregion
 	}
 }
