@@ -48,19 +48,23 @@ namespace GMTK2020
                 Player.Instance.DecreaseHealth ();
                 return;
 			}
-
+            Debug.Log(Type);
+            Debug.Log(positionX);
+            Debug.Log(positionY);
+            Debug.Log(direction);
+            //Debug.Log(BoardController.Instance.isOccupiedTileType(positionX, positionY));
             if ( Type == DiceSideType.Empty ) return;
 
             else if ( Type == DiceSideType.Attack )
             {
                 // do graphics
                 Enemy enemy = null;
-                if ( direction == key.w ) BoardController.Instance.GetEnemyIfHere ( positionX, positionY + 1 );
-                else if ( direction == key.s ) BoardController.Instance.GetEnemyIfHere ( positionX, positionY - 1 );
-                else if ( direction == key.a ) BoardController.Instance.GetEnemyIfHere ( positionX - 1, positionY );
-                else if ( direction == key.d ) BoardController.Instance.GetEnemyIfHere ( positionX + 1, positionY );
+                if ( direction == key.w ) enemy= BoardController.Instance.GetEnemyIfHere ( positionX, positionY + 1 );
+                else if ( direction == key.s) enemy = BoardController.Instance.GetEnemyIfHere ( positionX, positionY - 1 );
+                else if ( direction == key.a) enemy = BoardController.Instance.GetEnemyIfHere ( positionX - 1, positionY );
+                else if ( direction == key.d) enemy = BoardController.Instance.GetEnemyIfHere ( positionX + 1, positionY );
 
-                if ( enemy == null ) return;
+                if (enemy == null) { return; }
 
                 enemy.DecreaseHealth ( Level );
             }

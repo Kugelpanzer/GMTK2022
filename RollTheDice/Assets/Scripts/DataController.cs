@@ -89,7 +89,7 @@ public class DataController : MonoBehaviour
                 if (cFlag)
                 {
                     
-                    if(BoardController.Instance.isOccupiedTileType(j+1,i)==CritterType.wall )
+                    /*if(BoardController.Instance.isOccupiedTileType(j+1,i)==CritterType.wall )
                     {
                         GameObject ggj = Instantiate(rightHalfWall);
                         ggj.transform.position = gj.transform.position;
@@ -108,7 +108,7 @@ public class DataController : MonoBehaviour
                     {
                         GameObject ggj = Instantiate(downHalfWall);
                         ggj.transform.position = gj.transform.position;
-                    }
+                    }*/
                 }
 
             }

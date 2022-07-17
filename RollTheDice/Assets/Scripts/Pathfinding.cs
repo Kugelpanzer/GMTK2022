@@ -92,7 +92,7 @@ public static class PathfindingScript
     public static point MinPoint(List<point> listOfPoints)
     {
         point min = listOfPoints[0];
-
+        List<point> points = new List<point>();
         for (int i = 1; i < listOfPoints.Count; i++)
         {
             if (listOfPoints[i].value < min.value)
@@ -101,7 +101,14 @@ public static class PathfindingScript
             }
         }
 
-        return min;
+        for (int i = 1; i < listOfPoints.Count; i++)
+        {
+            if (listOfPoints[i].value == min.value)
+            {
+                points.Add(listOfPoints[i]);
+            }
+        }
+        return points[Random.Range(0,points.Count)];
     }
 
 

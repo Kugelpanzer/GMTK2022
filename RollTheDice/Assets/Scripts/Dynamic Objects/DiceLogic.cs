@@ -69,7 +69,6 @@ namespace GMTK2020
                     bottom2 = rightCurr;
                     break;
             }
-            Debug.Log(bottom2);
         return front;
         }
     }

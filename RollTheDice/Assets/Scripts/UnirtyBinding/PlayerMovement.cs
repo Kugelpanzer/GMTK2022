@@ -7,6 +7,7 @@ public class PlayerMovement : BaseMovement
     private float timeLerped = 0f;
     public float timeToLerp = 2f;
     Rotation r;
+    PlayerDiceSide ps;
     // Start is called before the first frame update
     public void Start()
     {
@@ -14,6 +15,8 @@ public class PlayerMovement : BaseMovement
         r = GetComponent<Rotation>();
         Player.Instance.GridPositionX = gridX;
         Player.Instance.GridPositionY = gridY;
+        ps = GetComponent<PlayerDiceSide>();
+
     }
 
     // Update is called once per frame
@@ -28,6 +31,10 @@ public class PlayerMovement : BaseMovement
                 
                 Player.Instance.MoveLeft();
                 CheckUpgrade();
+
+                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.ExecuteEffect(gridX, gridY, key.a);
+                Player.Instance.OnMove();
             }
         }
         if (Input.GetKeyDown(KeyCode.W))
@@ -39,6 +46,10 @@ public class PlayerMovement : BaseMovement
                 
                 Player.Instance.MoveUp();
                 CheckUpgrade();
+                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.ExecuteEffect(gridX, gridY, key.w);
+
+                Player.Instance.OnMove();
             }
         }
         if (Input.GetKeyDown(KeyCode.D))
@@ -51,6 +62,11 @@ public class PlayerMovement : BaseMovement
                 Player.Instance.MoveRight();
                 CheckUpgrade();
 
+                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.ExecuteEffect(gridX, gridY, key.d);
+
+                Player.Instance.OnMove();
+
             }
 
         }
@@ -62,11 +78,18 @@ public class PlayerMovement : BaseMovement
                 r.Rotate(key.s);
                 
                 Player.Instance.MoveDown();
+                
                 CheckUpgrade();
+
+                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.ExecuteEffect(gridX, gridY,key.s);
+                //Player.Instance.OnMove();
             }
         }
 
         base.Update();
+
+        //if (!Player.Instance.IsAlive())  LevelController.levelController.GoToScene(2);
     }
 
     private void CheckUpgrade()
@@ -75,6 +98,11 @@ public class PlayerMovement : BaseMovement
         {
             GetComponent<GenerateSides>().ChangeSide(Player.Instance.dice.bottom2, BoardController.Instance.CheckUpgrade(gridX, gridY));
             Destroy(BoardController.Instance.GetUpgrade(gridX, gridY).gameObject);
+        }
+
+        foreach(Enemy e in BoardController.Instance.Enemies)
+        {
+            e.MoveOrAttack();
         }
     }
 

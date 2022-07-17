@@ -37,9 +37,10 @@ namespace GMTK2020
         {
             if ( Shield > 0 ) Shield--;
             else if ( _health > 0 ) _health--;
+            Debug.Log(_health);
             if (_health < 0)
             {
-                
+                Debug.Log(_health);
             }
         }
 
