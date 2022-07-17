@@ -15,6 +15,8 @@ namespace GMTK2020
         public int MaxHealth { get { return _maxHealth; } }
         public int Health { get { return _health; } }
 
+        public int Shield = 0;
+
         public virtual void Initialize ()
         {
             _maxHealth = StartHealth;
@@ -33,7 +35,13 @@ namespace GMTK2020
 
         public void DecreaseHealth ()
         {
-            if ( _health > 0 ) _health--;
+            if ( Shield > 0 ) Shield--;
+            else if ( _health > 0 ) _health--;
+        }
+
+        public void DecreaseHealth (int decrement)
+        {
+            _health = Mathf.Max ( 0, _health - decrement );
         }
 
         public void IncreaseMaxHealth ()
