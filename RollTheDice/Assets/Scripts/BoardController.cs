@@ -70,8 +70,7 @@ namespace GMTK2020
 
         public Enemy GetEnemyIfHere (int x, int y)
 		{
-            Debug.Log(x + " " + y + "<--------------OVDE");
-            foreach (Enemy enemy in Enemies) { Debug.Log(enemy.GridPositionX + " " + enemy.GridPositionY + "<------------------------OVDE2"); if (enemy.GridPositionX == x && enemy.GridPositionY == y)  return enemy; }
+            foreach (Enemy enemy in Enemies) {  if (enemy.GridPositionX == x && enemy.GridPositionY == y)  return enemy; }
             return null;
 		}
 

@@ -48,10 +48,7 @@ namespace GMTK2020
                 Player.Instance.DecreaseHealth ();
                 return;
 			}
-            Debug.Log(Type);
-            Debug.Log(positionX);
-            Debug.Log(positionY);
-            Debug.Log(direction);
+
             //Debug.Log(BoardController.Instance.isOccupiedTileType(positionX, positionY));
             if ( Type == DiceSideType.Empty ) return;
 
