@@ -13,8 +13,8 @@ namespace GMTK2020
 
     public class PlayerDiceSide : MonoBehaviour
     {
-        private DiceSideType _type;
-		public DiceSideType Type { get => _type; set => _type = value; }
+        public DiceSideType Type = DiceSideType.Empty;
+        public int Level = 1;
 
 		// Start is called before the first frame update
 		void Start ()
@@ -27,5 +27,34 @@ namespace GMTK2020
         {
 
         }
+
+        public void LevelUp ()
+		{
+            Level++;
+		}
+
+        public void ExecuteEffect (int positionX, int positionY, key direction)
+		{
+            if ( Type == DiceSideType.Empty ) return;
+
+            if ( Type == DiceSideType.Attack )
+            {
+                // do graphics
+                Enemy enemy = null;
+                if ( direction == key.w ) BoardController.Instance.GetEnemyIfHere ( positionX, positionY + 1 );
+                else if ( direction == key.s ) BoardController.Instance.GetEnemyIfHere ( positionX, positionY - 1 );
+                else if ( direction == key.a ) BoardController.Instance.GetEnemyIfHere ( positionX - 1, positionY );
+                else if ( direction == key.d ) BoardController.Instance.GetEnemyIfHere ( positionX + 1, positionY );
+
+                if ( enemy == null ) return;
+
+                enemy.DecreaseHealth ( Level );
+            }
+
+            if (Type == DiceSideType.Defense)
+			{
+                Player.Instance.Shield = Level;
+			}                
+		}
     }
 }

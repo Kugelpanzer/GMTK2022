@@ -37,6 +37,12 @@ namespace GMTK2020
             return false;
 		}
 
+        public Enemy GetEnemyIfHere (int x, int y)
+		{
+            foreach ( Enemy enemy in Enemies ) if ( enemy.GridPositionX == x && enemy.GridPositionY == y ) return enemy;
+            return null;
+		}
+
         // Start is called before the first frame update
         void Start () {}
 

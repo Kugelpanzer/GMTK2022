@@ -16,6 +16,11 @@ namespace GMTK2020
 			base.Awake ();
 		}
 
+		public void OnMove ()
+		{
+			Shield--;
+		}
+
 		public new void MoveLeft ()
 		{
 			base.MoveLeft ();
