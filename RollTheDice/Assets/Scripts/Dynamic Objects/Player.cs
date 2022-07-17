@@ -8,19 +8,13 @@ namespace GMTK2020
 	{
 		public DiceLogic dice = new DiceLogic();
 
-		private static Player instance;
-		public static Player Instance
-        {
-            get
-            {
-				if(instance = null)
-                {
-					instance = new Player();
-                }
+		public static Player Instance;
 
-				return instance;
-            }
-        }
+		private new void Awake ()
+		{
+			if ( Instance == null ) Instance = this;
+			base.Awake ();
+		}
 
 		public new void MoveLeft ()
 		{

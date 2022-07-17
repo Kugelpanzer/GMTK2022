@@ -19,6 +19,7 @@ namespace GMTK2020
 		// Move towards Player
 		public void Move ()
 		{
+			BoardController.Instance.FindPath ( this, Player.Instance );
 			int directionX = Player.Instance.GridPositionX - GridPositionX;
 			int directionY = Player.Instance.GridPositionY - GridPositionY;
 
