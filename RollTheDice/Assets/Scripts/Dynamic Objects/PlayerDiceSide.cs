@@ -42,6 +42,7 @@ namespace GMTK2020
 
         public void ExecuteEffect (int positionX, int positionY, key direction)
 		{
+            Debug.Log(Type);
             if (IsCursed)
 			{
                 // do graphics
@@ -62,13 +63,19 @@ namespace GMTK2020
                 else if ( direction == key.d) enemy = BoardController.Instance.GetEnemyIfHere ( positionX + 1, positionY );
 
                 if (enemy == null) { return; }
-
+                GameObject effect = Instantiate(DataController.Instance.allSidesDict[DiceSideType.Attack].effectPrefab);
+                effect.GetComponent<EffectExec>().GridPositionX = enemy.GridPositionX;
+                effect.GetComponent<EffectExec>().GridPositionY = enemy.GridPositionY;
                 enemy.DecreaseHealth ( Level );
             }
 
             else if ( Type == DiceSideType.Defense)
 			{
                 // do graphics
+                GameObject effect = Instantiate(DataController.Instance.allSidesDict[Type].effectPrefab);
+                effect.GetComponent<EffectExec>().GridPositionX = Player.Instance.GridPositionX;
+                effect.GetComponent<EffectExec>().GridPositionY = Player.Instance.GridPositionY;
+
                 Player.Instance.Shield = Level;
 			}
 

@@ -53,6 +53,7 @@ public class GenerateSides : MonoBehaviour
         so.transform.rotation = sideObject[side - 1].transform.rotation;
         GameObject old = sideObject[side - 1];
         sideObject[side - 1] = so;
+        sides[side - 1] = newType;
         Destroy(old);
 
     }

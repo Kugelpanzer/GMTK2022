@@ -9,5 +9,6 @@ public class SideScriptable : ScriptableObject
 {
     public GameObject side3DPrefab;
     public GameObject sideUIPrefab;
+    public GameObject effectPrefab;
     public DiceSideType type;
 }

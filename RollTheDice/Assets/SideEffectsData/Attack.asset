@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side3DPrefab: {fileID: 4794925346897559979, guid: d058f8e1bc139a94eb21364d5e26dfd5, type: 3}
   sideUIPrefab: {fileID: 0}
+  effectPrefab: {fileID: 3354747198107209755, guid: 24cdab1fee9a70342a7a8522b5d376aa, type: 3}
   type: 1

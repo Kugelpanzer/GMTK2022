@@ -32,7 +32,7 @@ public class PlayerMovement : BaseMovement
                 Player.Instance.MoveLeft();
                 CheckUpgrade();
 
-                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.Type = GetComponent<GenerateSides>().sides[Player.Instance.dice.front - 1];
                 ps.ExecuteEffect(gridX, gridY, key.a);
                 Player.Instance.OnMove();
             }
@@ -46,7 +46,7 @@ public class PlayerMovement : BaseMovement
                 
                 Player.Instance.MoveUp();
                 CheckUpgrade();
-                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.Type = GetComponent<GenerateSides>().sides[Player.Instance.dice.front - 1];
                 ps.ExecuteEffect(gridX, gridY, key.w);
 
                 Player.Instance.OnMove();
@@ -62,7 +62,7 @@ public class PlayerMovement : BaseMovement
                 Player.Instance.MoveRight();
                 CheckUpgrade();
 
-                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.Type = GetComponent<GenerateSides>().sides[Player.Instance.dice.front - 1];
                 ps.ExecuteEffect(gridX, gridY, key.d);
 
                 Player.Instance.OnMove();
@@ -81,7 +81,7 @@ public class PlayerMovement : BaseMovement
                 
                 CheckUpgrade();
 
-                ps.Type = GetComponent<GenerateSides>().sides[0];
+                ps.Type = GetComponent<GenerateSides>().sides[Player.Instance.dice.front-1];
                 ps.ExecuteEffect(gridX, gridY,key.s);
                 //Player.Instance.OnMove();
             }

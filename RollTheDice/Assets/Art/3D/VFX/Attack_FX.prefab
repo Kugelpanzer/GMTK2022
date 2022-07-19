@@ -4888,6 +4888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8753544950438037714}
+  - component: {fileID: 7324376083179158452}
   m_Layer: 0
   m_Name: Attack_FX
   m_TagString: Untagged
@@ -4903,7 +4904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354747198107209755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.85, y: 0, z: 8.997}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4914,6 +4915,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7324376083179158452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354747198107209755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7ea68d0f2f7fe4fa8a53668996bbf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationTimer: 3
+  GridPositionX: 0
+  GridPositionY: 0
+  offsetX: 0
+  offsetY: 0
 --- !u!1 &4253606628351424043
 GameObject:
   m_ObjectHideFlags: 0
